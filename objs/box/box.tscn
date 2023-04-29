@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn868fx4bci6h"]
+
+[ext_resource type="PackedScene" uid="uid://d2xu3si3f5wo0" path="res://assets/3d/box/Box.blend" id="1_bwmvr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7agei"]
+
+[node name="box" type="StaticBody3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_bwmvr")]
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7agei")

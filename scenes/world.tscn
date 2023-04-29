@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqmr4i4hk6v1"]
+[gd_scene load_steps=6 format=3 uid="uid://cqmr4i4hk6v1"]
+
+[ext_resource type="PackedScene" uid="uid://bqpnfqhxvmbho" path="res://objs/camera_controller/camera_controller.tscn" id="1_ffqe8"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4aepd"]
 
@@ -10,9 +12,6 @@ albedo_color = Color(0, 0.270588, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_smo2k"]
 
 [node name="world" type="Node3D"]
-
-[node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.844805, 0.535075, 0, -0.535075, 0.844805, 0, 3.7457, 5.25387)
 
 [node name="ground" type="StaticBody3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -31,3 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 
 [node name="test_box" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854625, 0)
 mesh = SubResource("BoxMesh_smo2k")
+
+[node name="camera_controller" parent="." instance=ExtResource("1_ffqe8")]
+transform = Transform3D(0.707107, -0.385118, 0.59303, 0, 0.838671, 0.544639, -0.707107, -0.385118, 0.59303, 4.675, 6.9, 4.668)
