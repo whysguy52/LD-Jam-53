@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqmr4i4hk6v1"]
+
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_8ictl"]
+[ext_resource type="PackedScene" uid="uid://bqpnfqhxvmbho" path="res://objs/camera_controller/camera_controller.tscn" id="2_vkqcu"]
+[ext_resource type="PackedScene" uid="uid://cbvtkgpxo5qku" path="res://objs/warehouse/warehouse.tscn" id="3_lg3ud"]
+[ext_resource type="PackedScene" uid="uid://4r57ueebc46m" path="res://objs/house/house.tscn" id="4_4xkl1"]
+[ext_resource type="PackedScene" uid="uid://bxfj57iw5gu7a" path="res://objs/drone/drone.tscn" id="5_vy5cr"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4aepd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tiqol"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0kue"]
+albedo_color = Color(0, 0.270588, 0, 1)
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_8ictl")
+
+[node name="camera_controller" parent="." instance=ExtResource("2_vkqcu")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 30, 30, 30)
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 0, 63.7393, 22.6202)
+
+[node name="ground" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="collision" type="CollisionShape3D" parent="ground"]
+shape = SubResource("WorldBoundaryShape3D_4aepd")
+
+[node name="mesh" type="MeshInstance3D" parent="ground"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tiqol")
+surface_material_override/0 = SubResource("StandardMaterial3D_y0kue")
+
+[node name="warehouse" parent="." instance=ExtResource("3_lg3ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2, 10)
+
+[node name="house" parent="." instance=ExtResource("4_4xkl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.003, 1.5, 0)
+
+[node name="drones" type="Node3D" parent="."]
+
+[node name="drone" parent="drones" instance=ExtResource("5_vy5cr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9947, 4.37715, 46.9406)
+
+[node name="warehouse_check_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="warehouse_check_timer" to="." method="_on_warehouse_check_timer_timeout"]
