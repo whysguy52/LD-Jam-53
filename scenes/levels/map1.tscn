@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://mlcgi5ggl1xj"]
+
+[ext_resource type="PackedScene" uid="uid://b06x4qlaxe0dk" path="res://assets/3d/tiles/road_1.blend" id="1_ma635"]
+[ext_resource type="PackedScene" uid="uid://cchqg0iaekqsj" path="res://assets/3d/tiles/intersection.blend" id="2_ec7b2"]
+[ext_resource type="PackedScene" uid="uid://c66gt1qemn6xh" path="res://assets/3d/tiles/empty_lot.blend" id="3_xjuah"]
+[ext_resource type="PackedScene" uid="uid://bccpaondqqptg" path="res://assets/3d/houses/house_small.blend" id="4_gx6wu"]
+
+[node name="map" type="Node3D"]
+
+[node name="road_2" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
+
+[node name="road_3" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, -7)
+
+[node name="road_4" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4, 0, -7)
+
+[node name="empty_lot" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1)
+
+[node name="empty_lot2" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 5)
+
+[node name="empty_lot3" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+
+[node name="empty_lot4" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="house_small" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1)
+
+[node name="empty_lot5" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="empty_lot6" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+
+[node name="road_5" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -8, 0, -7)
+
+[node name="empty_lot7" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+
+[node name="empty_lot8" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
+
+[node name="empty_lot9" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="empty_lot10" parent="." instance=ExtResource("3_xjuah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="road_6" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 10, 0, -7)
+
+[node name="intersection2" parent="." instance=ExtResource("2_ec7b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -7)
+
+[node name="road_7" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -1)
+
+[node name="road_8" parent="." instance=ExtResource("1_ma635")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 5)
+
+[node name="house_small2" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+
+[node name="house_small3" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="house_small4" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="house_small5" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+
+[node name="house_small6" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0, 4)
+
+[node name="house_small7" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 4)
+
+[node name="house_small8" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 4)
+
+[node name="house_small9" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 4)
+
+[node name="house_small10" parent="." instance=ExtResource("4_gx6wu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14, 0, 4)

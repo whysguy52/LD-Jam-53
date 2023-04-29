@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqmr4i4hk6v1"]
+[gd_scene load_steps=10 format=3 uid="uid://cqmr4i4hk6v1"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_8ictl"]
 [ext_resource type="PackedScene" uid="uid://bqpnfqhxvmbho" path="res://objs/camera_controller/camera_controller.tscn" id="2_vkqcu"]
 [ext_resource type="PackedScene" uid="uid://cbvtkgpxo5qku" path="res://objs/warehouse/warehouse.tscn" id="3_lg3ud"]
 [ext_resource type="PackedScene" uid="uid://4r57ueebc46m" path="res://objs/house/house.tscn" id="4_4xkl1"]
 [ext_resource type="PackedScene" uid="uid://bxfj57iw5gu7a" path="res://objs/drone/drone.tscn" id="5_vy5cr"]
+[ext_resource type="PackedScene" uid="uid://mlcgi5ggl1xj" path="res://scenes/levels/map1.tscn" id="6_yj3u3"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4aepd"]
 
@@ -29,7 +30,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_4aepd")
 
 [node name="mesh" type="MeshInstance3D" parent="ground"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.0836651, 0)
 mesh = SubResource("PlaneMesh_tiqol")
 surface_material_override/0 = SubResource("StandardMaterial3D_y0kue")
 
@@ -42,9 +43,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.003, 1.5, 0)
 [node name="drones" type="Node3D" parent="."]
 
 [node name="drone" parent="drones" instance=ExtResource("5_vy5cr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9947, 4.37715, 46.9406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0906, 4.37715, 34.4576)
 
 [node name="warehouse_check_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="map" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0693655, 0)
+
+[node name="map2" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0693655, -18)
+
+[node name="map3" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="map4" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.0693655, 0)
+
+[node name="map5" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.0693655, -18)
+
+[node name="map6" parent="." instance=ExtResource("6_yj3u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 18)
 
 [connection signal="timeout" from="warehouse_check_timer" to="." method="_on_warehouse_check_timer_timeout"]
