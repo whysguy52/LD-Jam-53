@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqmr4i4hk6v1"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4aepd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tiqol"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0kue"]
+albedo_color = Color(0, 0.270588, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_smo2k"]
+
+[node name="world" type="Node3D"]
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.844805, 0.535075, 0, -0.535075, 0.844805, 0, 3.7457, 5.25387)
+
+[node name="ground" type="StaticBody3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="collision" type="CollisionShape3D" parent="ground"]
+shape = SubResource("WorldBoundaryShape3D_4aepd")
+
+[node name="mesh" type="MeshInstance3D" parent="ground"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tiqol")
+surface_material_override/0 = SubResource("StandardMaterial3D_y0kue")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 0, 63.7393, 22.6202)
+
+[node name="test_box" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854625, 0)
+mesh = SubResource("BoxMesh_smo2k")
