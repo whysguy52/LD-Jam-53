@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cchqg0iaekqsj"
-path="res://.godot/imported/intersection.blend-9963d9b43f64cbfc7acd53b65473ee9d.scn"
+uid="uid://c66gt1qemn6xh"
+path="res://.godot/imported/empty_lot.blend-e36d0ac0d8f92fc0c75b69fd19581e19.scn"
 
 [deps]
 
-source_file="res://assets/3d/roads/intersection.blend"
-dest_files=["res://.godot/imported/intersection.blend-9963d9b43f64cbfc7acd53b65473ee9d.scn"]
+source_file="res://assets/3d/tiles/empty_lot.blend"
+dest_files=["res://.godot/imported/empty_lot.blend-e36d0ac0d8f92fc0c75b69fd19581e19.scn"]
 
 [params]
 

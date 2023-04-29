@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b06x4qlaxe0dk"
-path="res://.godot/imported/road_1.blend-8167132303f846b5f352a99623747ad8.scn"
+path="res://.godot/imported/road_1.blend-8af6fd4ea758ae8e739f92808100d207.scn"
 
 [deps]
 
-source_file="res://assets/3d/roads/road_1.blend"
-dest_files=["res://.godot/imported/road_1.blend-8167132303f846b5f352a99623747ad8.scn"]
+source_file="res://assets/3d/tiles/road_1.blend"
+dest_files=["res://.godot/imported/road_1.blend-8af6fd4ea758ae8e739f92808100d207.scn"]
 
 [params]
 
