@@ -38,8 +38,6 @@ func process_movement(delta):
 
   origin = origin.lerp(target, SPEED * delta)
 
-  print(">>> process_movement", " orgin: ", origin, " dir: ", dir, " t: ", target)
-
   transform.origin.x = origin.x
   transform.origin.z = origin.z
 
