@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://du0f61j2v8mhm"]
+
+[ext_resource type="PackedScene" uid="uid://mlcgi5ggl1xj" path="res://objs/tiles/map_cell1.tscn" id="1_3pj5j"]
+[ext_resource type="PackedScene" uid="uid://cep0s6mlsywln" path="res://objs/tiles/map_cell_drone_tower.tscn" id="2_c3gf0"]
+
+[node name="map_cell_house_grid_w_tower" type="Node3D"]
+
+[node name="map2" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="map4" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 0)
+
+[node name="map5" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 18)
+
+[node name="map6" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 18)
+
+[node name="map7" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="map8" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -18)
+
+[node name="map9" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -18)
+
+[node name="map11" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)
+
+[node name="map14" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -36)
+
+[node name="map15" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, -36)
+
+[node name="map61" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
+
+[node name="map62" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 36)
+
+[node name="map63" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 36)
+
+[node name="map10" parent="." instance=ExtResource("1_3pj5j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 0)
+
+[node name="map" parent="." instance=ExtResource("2_c3gf0")]
