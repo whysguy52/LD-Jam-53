@@ -1,17 +1,10 @@
-extends Camera3D
+extends Node3D
 
-const MAX_SPEED = 5
-const ACCEL = 4.5
-const DEACCEL = 16
+const MAX_SPEED = 25
+const SPEED = 1.25
 
-var dir = Vector3()
+var input_movement_vector = Vector2()
 var is_disabled = false
-var velocity = Vector3()
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-  Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-  Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
   if is_disabled:
@@ -21,47 +14,40 @@ func _physics_process(delta):
   process_movement(delta)
 
 func process_input():
-  dir = Vector3()
-  var cam_xform = get_global_transform()
-  var input_movement_vector = Vector2()
+  input_movement_vector = Vector2()
 
   if Input.is_action_pressed("cam_forward"):
-    input_movement_vector.y += 1
+    input_movement_vector.y -= 1
+    input_movement_vector.x -= 1
   if Input.is_action_pressed("cam_backward"):
-      input_movement_vector.y -= 1
+      input_movement_vector.y += 1
+      input_movement_vector.x += 1
   if Input.is_action_pressed("cam_strafe_left"):
     input_movement_vector.x -= 1
+    input_movement_vector.y += 1
   if Input.is_action_pressed("cam_strafe_right"):
     input_movement_vector.x += 1
+    input_movement_vector.y -= 1
 
   input_movement_vector = input_movement_vector.normalized()
-  dir += -cam_xform.basis.z.normalized() * input_movement_vector.y
-  dir += cam_xform.basis.x.normalized() * input_movement_vector.x
 
 func process_movement(delta):
-  dir.y = 0
-  dir = dir.normalized()
+  var dir = Vector3(input_movement_vector.x, 0, input_movement_vector.y)
+  var origin = Vector3(transform.origin)
+  var target = origin + dir * MAX_SPEED
 
-  var hvel = velocity
-  hvel.y = 0
+  origin = origin.lerp(target, SPEED * delta)
 
-  var target = dir * MAX_SPEED
+  print(">>> process_movement", " orgin: ", origin, " dir: ", dir, " t: ", target)
 
-  var accel
-  if dir.dot(hvel) > 0:
-    accel = ACCEL
-  else:
-    accel = DEACCEL
+  transform.origin.x = origin.x
+  transform.origin.z = origin.z
 
-  hvel = hvel.lerp(target, accel * delta)
-  velocity.x = hvel.x
-  velocity.z = hvel.z
 
-  # move_and_slide()
-
-func _input(event):
-  if is_disabled:
-    return
-
-  # if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-    # do zoom stuff here
+# TODO: for camera zoom in/out
+#func _input(_event):
+#  if is_disabled:
+#    return
+#
+#  if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+#    # do zoom stuff here

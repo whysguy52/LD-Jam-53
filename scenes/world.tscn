@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqmr4i4hk6v1"]
+[gd_scene load_steps=7 format=3 uid="uid://cqmr4i4hk6v1"]
 
 [ext_resource type="PackedScene" uid="uid://bqpnfqhxvmbho" path="res://objs/camera_controller/camera_controller.tscn" id="1_ffqe8"]
+[ext_resource type="PackedScene" uid="uid://dn868fx4bci6h" path="res://objs/box/box.tscn" id="2_5eos2"]
+[ext_resource type="PackedScene" uid="uid://bxfj57iw5gu7a" path="res://objs/drone/drone.tscn" id="3_3j17g"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4aepd"]
 
@@ -9,9 +11,13 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0kue"]
 albedo_color = Color(0, 0.270588, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_smo2k"]
-
 [node name="world" type="Node3D"]
+
+[node name="camera_controller" parent="." instance=ExtResource("1_ffqe8")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 30, 30, 30)
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 0, 63.7393, 22.6202)
 
 [node name="ground" type="StaticBody3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -24,12 +30,8 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_tiqol")
 surface_material_override/0 = SubResource("StandardMaterial3D_y0kue")
 
-[node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 0, 63.7393, 22.6202)
+[node name="box" parent="." instance=ExtResource("2_5eos2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="test_box" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854625, 0)
-mesh = SubResource("BoxMesh_smo2k")
-
-[node name="camera_controller" parent="." instance=ExtResource("1_ffqe8")]
-transform = Transform3D(0.707107, -0.385118, 0.59303, 0, 0.838671, 0.544639, -0.707107, -0.385118, 0.59303, 4.675, 6.9, 4.668)
+[node name="drone" parent="." instance=ExtResource("3_3j17g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26098, 4.37715, 3.73569)
