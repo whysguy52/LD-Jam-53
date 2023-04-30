@@ -4,13 +4,14 @@ var selection_material_overlay = preload("res://assets/3d/houses/selection_mater
 
 var delivery_areas = Array()
 var isEnabled = false
+var is_hovered = false
 
 func set_enabled(enabledSet: bool):
   isEnabled = enabledSet
-  get_node("collision").visible = isEnabled
+  $collision.visible = isEnabled
 
-func set_view_radius_enabled(enabled: bool):
-  get_node("drone_radius_view").visible = enabled
+func toggle_view_radius():
+  $drone_radius_view.visible = !$drone_radius_view.visible
 
 func get_delivery_areas():
   var instance_ids = Array()
@@ -24,12 +25,25 @@ func get_delivery_areas():
       delivery_areas.append(target)
   return delivery_areas
 
-func _on_selection_area_mouse_entered():
+func set_hover(hover: bool):
   for child in $drone_tower.get_children(true):
     if child is MeshInstance3D:
-      child.material_overlay = selection_material_overlay
+      child.material_overlay = selection_material_overlay if hover else null
+
+  is_hovered = hover
+
+func _input(event):
+  if is_hovered and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
+    click()
+
+func _on_selection_area_mouse_entered():
+  if isEnabled:
+    set_hover(true)
 
 func _on_selection_area_mouse_exited():
-  for child in $drone_tower.get_children(true):
-    if child is MeshInstance3D:
-      child.material_overlay = null
+  if isEnabled:
+    set_hover(false)
+
+func click():
+  if isEnabled:
+    toggle_view_radius()
