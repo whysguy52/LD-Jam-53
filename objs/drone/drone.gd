@@ -13,7 +13,18 @@ func _ready():
   transform.origin.y = FLY_HEIGHT
 
 func _physics_process(delta):
+  movement(delta)
+
+func movement(delta):
   if destination_position == Vector3.ZERO:
+    return
+
+  movement_pickup(delta)
+  movement_deliver(delta)
+  move_and_slide()
+
+func movement_pickup(delta):
+  if !box_to_pickup:
     return
 
   var horz_position = global_position
@@ -39,34 +50,40 @@ func _physics_process(delta):
     velocity.z = move_toward(velocity.z, 0, SPEED * delta)
 
     # reached destination x,z now do y
-    if box_to_pickup:
-      if $box_location.global_position.distance_to(box_to_pickup.global_position) < DISTANCE_THRESHOLD:
-        box_to_deliver = box_to_pickup
-        box_to_deliver.reparent($box_location)
-        box_to_pickup = null
-        destination_position = global_position
-        destination_position.y = global_position.y + FLY_HEIGHT
-        return
-      else:
-        direction = (box_to_pickup.global_position - global_position).normalized()
-    elif box_to_deliver:
-      if global_position.distance_to(destination_position) < DISTANCE_THRESHOLD:
-        global_position = destination_position
+    if $box_location.global_position.distance_to(box_to_pickup.global_position) < DISTANCE_THRESHOLD:
+      box_to_deliver = box_to_pickup
+      box_to_deliver.reparent($box_location)
+      box_to_pickup = null
+      destination_position = global_position
+      destination_position.y = global_position.y + FLY_HEIGHT
+      return
+    else:
+      direction = (box_to_pickup.global_position - global_position).normalized()
 
-      direction = (destination_position - global_position).normalized()
+    if direction:
+      velocity.y = direction.y * SPEED * delta
+    else:
+      velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 
-    if box_to_pickup or box_to_deliver:
-      if direction:
-        velocity.y = direction.y * SPEED * delta
-      else:
-        velocity.y = move_toward(velocity.y, 0, SPEED * delta)
+func movement_deliver(delta):
+  if !box_to_deliver:
+    return
 
-        if box_to_deliver && !deliver_box_location:
-          # TODO: remove this, find a house instead, and set that houses box to deliver_box_location
-          deliver_box_location = box_to_deliver
-          print('>>> picked up box, find a house to deliver to')
+  # picked up box, now go up to fly height
+  if global_position.distance_to(destination_position) < DISTANCE_THRESHOLD:
+    global_position = destination_position
 
-  move_and_slide()
+  var direction = (destination_position - global_position).normalized()
+
+  if direction:
+    velocity.y = direction.y * SPEED * delta
+  else:
+    velocity.y = move_toward(velocity.y, 0, SPEED * delta)
+
+    if !deliver_box_location:
+      # TODO: remove this, find a house instead, and set that houses box to deliver_box_location
+      deliver_box_location = box_to_deliver
+      print('>>> picked up box, find a house to deliver to')
 
 func pickup_box(box):
   if box_to_pickup:
