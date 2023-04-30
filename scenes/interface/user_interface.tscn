@@ -49,13 +49,13 @@ theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 35
 text = "3"
 
-[node name="max_label2" type="Label" parent="h_info_container"]
+[node name="available_label" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 20
 text = "   Available="
 
-[node name="max_label3" type="Label" parent="h_info_container"]
+[node name="delivery_drone_available_count_display" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 35
