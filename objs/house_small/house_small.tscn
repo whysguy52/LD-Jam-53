@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0vfowk6bwjr8"]
+[gd_scene load_steps=8 format=3 uid="uid://c0vfowk6bwjr8"]
 
 [ext_resource type="Script" path="res://objs/house_small/house_small.gd" id="1_bfuu5"]
 [ext_resource type="PackedScene" uid="uid://bccpaondqqptg" path="res://assets/3d/houses/house_small.blend" id="1_smmhu"]
-[ext_resource type="Material" path="res://assets/3d/box/test_transparency.tres" id="2_hd3fh"]
+[ext_resource type="Material" uid="uid://dgmwhjrt4i3gx" path="res://assets/3d/box/test_transparency.tres" id="2_hd3fh"]
+[ext_resource type="PackedScene" uid="uid://dahvs23usvcvn" path="res://assets/3d/house_arrow/house_arrow.blend" id="4_sg8r7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7xnos"]
 
@@ -24,7 +25,7 @@ collision_layer = 2
 mesh = SubResource("BoxMesh_7xnos")
 surface_material_override/0 = ExtResource("2_hd3fh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="delivery_area"]
+[node name="collision" type="CollisionShape3D" parent="delivery_area"]
 shape = SubResource("BoxShape3D_ouf7k")
 
 [node name="selection_area" type="Area3D" parent="."]
@@ -34,6 +35,10 @@ collision_mask = 0
 
 [node name="collision" type="CollisionShape3D" parent="selection_area"]
 shape = SubResource("BoxShape3D_4eejk")
+
+[node name="house_arrow" parent="." instance=ExtResource("4_sg8r7")]
+transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0, 9.31911, 0)
+visible = false
 
 [connection signal="mouse_entered" from="selection_area" to="." method="_on_selection_area_mouse_entered"]
 [connection signal="mouse_exited" from="selection_area" to="." method="_on_selection_area_mouse_exited"]

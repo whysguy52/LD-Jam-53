@@ -19,4 +19,5 @@ func _input(event):
     click()
 
 func click():
-  print('>>> clicked house')
+  if $house_arrow.visible:
+    get_node('/root/world/warehouse').spawn_drone()

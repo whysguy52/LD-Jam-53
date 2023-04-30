@@ -18,6 +18,9 @@ func spawn_box():
 
   var box = box_scene.instantiate()
   var delivery_area = level_node.delivery_areas.pick_random()
+  var house = delivery_area.get_parent()
+
+  house.get_node('house_arrow').show()
 
   box.delivery_area = delivery_area
 
@@ -42,10 +45,10 @@ func spawn_drone():
   drone.global_position = $drone_spawn_location.global_position
   drone.pickup_box(box)
 
+  var house = box.delivery_area.get_parent()
+  house.get_node('house_arrow').hide()
+
 func _on_box_timer_timeout():
   $box_timer.stop()
   $box_timer.start(randf_range(MIN_BOX_TIMER, MAX_BOX_TIMER))
   spawn_box()
-
-func _on_drone_timer_timeout():
-  spawn_drone()

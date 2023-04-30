@@ -14,7 +14,7 @@ albedo_color = Color(0, 0.270588, 0, 1)
 [node name="world" type="Node3D"]
 
 [node name="camera_controller" parent="." instance=ExtResource("2_vkqcu")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 45, 45, 45)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 550, 500, 550)
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.542691, 0.839933, 0, -0.839933, 0.542691, 0, 63.7393, 22.6202)

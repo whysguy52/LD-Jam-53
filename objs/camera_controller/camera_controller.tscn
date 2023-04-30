@@ -12,7 +12,7 @@ script = ExtResource("1_87lhv")
 transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 0, 0)
 projection = 1
 current = true
-size = 45.0
+size = 50.0
 
 [node name="user_interface" type="Control" parent="camera"]
 layout_mode = 3
