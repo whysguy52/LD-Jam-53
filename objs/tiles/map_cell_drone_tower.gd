@@ -1,6 +1,7 @@
 extends Area3D
 
 var houses
+var isEnabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,4 +12,7 @@ func _ready():
 func _process(delta):
   pass
 
-
+func set_enabled(enabledSet: bool):
+  isEnabled = enabledSet
+  get_node("CollisionShape3D").visible = isEnabled
+  get_node("drone_radius_view").visible = isEnabled

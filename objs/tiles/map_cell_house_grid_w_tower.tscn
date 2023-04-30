@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://du0f61j2v8mhm"]
+[gd_scene load_steps=4 format=3 uid="uid://du0f61j2v8mhm"]
 
 [ext_resource type="PackedScene" uid="uid://mlcgi5ggl1xj" path="res://objs/tiles/map_cell1.tscn" id="1_3pj5j"]
+[ext_resource type="Script" path="res://objs/tiles/map_cell_house_grid_w_tower.gd" id="1_8kk8p"]
 [ext_resource type="PackedScene" uid="uid://cep0s6mlsywln" path="res://objs/tiles/map_cell_drone_tower.tscn" id="2_c3gf0"]
 
 [node name="map_cell_house_grid_w_tower" type="Node3D"]
+script = ExtResource("1_8kk8p")
 
 [node name="map2" parent="." instance=ExtResource("1_3pj5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)

@@ -18,7 +18,7 @@ height = 20.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyh0x"]
 transparency = 1
-albedo_color = Color(0.537255, 0.85098, 0.811765, 0.0980392)
+albedo_color = Color(0, 0.74902, 0.85098, 0.25098)
 
 [node name="map_cell_drone_tower" type="Node3D"]
 
@@ -87,9 +87,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+visible = false
 shape = SubResource("CylinderShape3D_fgp4k")
 
 [node name="drone_radius_view" type="MeshInstance3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+visible = false
 mesh = SubResource("CylinderMesh_6bo45")
 surface_material_override/0 = SubResource("StandardMaterial3D_gyh0x")
