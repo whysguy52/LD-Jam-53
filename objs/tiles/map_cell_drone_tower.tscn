@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cep0s6mlsywln"]
+[gd_scene load_steps=11 format=3 uid="uid://cep0s6mlsywln"]
 
 [ext_resource type="PackedScene" uid="uid://b06x4qlaxe0dk" path="res://assets/3d/tiles/road_1.blend" id="1_xh2xb"]
 [ext_resource type="PackedScene" uid="uid://c66gt1qemn6xh" path="res://assets/3d/tiles/empty_lot.blend" id="2_88doc"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://co1ys222etaar" path="res://assets/3d/drone_tower/drone_tower.blend" id="4_rbvqh"]
 [ext_resource type="Script" path="res://objs/tiles/map_cell_drone_tower.gd" id="5_m3cv1"]
 [ext_resource type="PackedScene" uid="uid://bt7wx47mdjj1u" path="res://assets/3d/drone_tower/drone_tower_head.blend" id="5_poqwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tg45"]
+size = Vector3(8, 20, 8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fgp4k"]
 height = 20.0
@@ -81,16 +84,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 2)
 
 [node name="drone_tower" type="Area3D" parent="."]
 collision_mask = 2
+input_ray_pickable = false
 script = ExtResource("5_m3cv1")
 
 [node name="drone_tower" parent="drone_tower" instance=ExtResource("4_rbvqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="drone_tower"]
+[node name="selection_area" type="Area3D" parent="drone_tower/drone_tower"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="collision" type="CollisionShape3D" parent="drone_tower/drone_tower/selection_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("BoxShape3D_7tg45")
+
+[node name="collision" type="CollisionShape3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
 shape = SubResource("CylinderShape3D_fgp4k")
 
 [node name="drone_radius_view" type="MeshInstance3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+visible = false
 mesh = SubResource("CylinderMesh_6bo45")
 surface_material_override/0 = SubResource("StandardMaterial3D_gyh0x")
+
+[connection signal="mouse_entered" from="drone_tower/drone_tower/selection_area" to="drone_tower" method="_on_selection_area_mouse_entered"]
+[connection signal="mouse_exited" from="drone_tower/drone_tower/selection_area" to="drone_tower" method="_on_selection_area_mouse_exited"]
