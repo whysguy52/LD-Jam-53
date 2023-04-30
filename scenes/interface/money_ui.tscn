@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrv3c5yn1kle"]
+
+[ext_resource type="Texture2D" uid="uid://bhgl1waghcn4t" path="res://assets/2d/ui/icons/money_icon.png" id="1_s6020"]
+[ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="2_0ujnc"]
+
+[node name="money_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_s6020")
+
+[node name="equals_sign" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ujnc")
+theme_override_font_sizes/font_size = 20
+text = "="
+
+[node name="money_counter_display" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ujnc")
+theme_override_font_sizes/font_size = 35
+text = "0"
