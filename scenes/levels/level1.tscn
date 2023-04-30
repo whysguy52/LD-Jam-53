@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lqmnagpf4wro" path="res://objs/tiles/start_cell.tscn" id="1_0omfc"]
 [ext_resource type="PackedScene" uid="uid://qajccli1b1a0" path="res://objs/tiles/map_cell_house_grid.tscn" id="2_mc0uj"]
-[ext_resource type="PackedScene" path="res://objs/tiles/map_cell_house_grid_w_tower.tscn" id="3_1ci6t"]
+[ext_resource type="PackedScene" uid="uid://du0f61j2v8mhm" path="res://objs/tiles/map_cell_house_grid_w_tower.tscn" id="3_1ci6t"]
 
 [node name="Map1" type="Node3D"]
 

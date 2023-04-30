@@ -1,18 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbvtkgpxo5qku"]
 
 [ext_resource type="Script" path="res://objs/warehouse/warehouse.gd" id="1_3a48e"]
-[ext_resource type="Material" uid="uid://dgmwhjrt4i3gx" path="res://assets/3d/box/test_transparency.tres" id="1_beav6"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1oqfo"]
+[ext_resource type="Material" path="res://assets/3d/box/test_transparency.tres" id="1_beav6"]
+[ext_resource type="PackedScene" uid="uid://dpwr2gpbjvfx5" path="res://assets/3d/warehouse/warehouse.blend" id="2_0i80k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kgiv5"]
 
 [node name="warehouse" type="Node3D"]
 script = ExtResource("1_3a48e")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 4, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_1oqfo")
+[node name="warehouse" parent="." instance=ExtResource("2_0i80k")]
 
 [node name="box_location" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6)
