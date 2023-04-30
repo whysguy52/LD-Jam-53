@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const FLY_HEIGHT = 10
-const SPEED = 666
+const SPEED = 999 # 666 for real, 999 for testing
 const DISTANCE_THRESHOLD = 0.3
 
 var destination_position : Vector3 = Vector3.ZERO
@@ -10,7 +10,10 @@ var box_to_deliver = null # NOTE: this is a Box, dunno how to import class/scrip
 var deliver_box_location : Node3D = null
 var go_to_height = false
 var go_to_warehouse = false
+var will_be_destroyed = false
+
 @onready var drone_spawn_location = get_parent().get_parent().get_node('warehouse/drone_spawn_location')
+@onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 
 func _physics_process(delta):
   movement(delta)
@@ -144,7 +147,9 @@ func movement_go_to_warehouse(delta):
   # reached warehouse drone spawn location x,z
   if global_position.distance_to(drone_spawn_location.global_position) < DISTANCE_THRESHOLD:
     # mark for destruction
+    will_be_destroyed = true
     queue_free()
+    ui.update_ui()
     return
 
   move_down_to(drone_spawn_location, delta)

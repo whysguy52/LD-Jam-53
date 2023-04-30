@@ -64,4 +64,4 @@ func working_drones_count():
   if !drones_node:
     return 0
 
-  return drones_node.get_child_count()
+  return drones_node.get_children().filter(func(drone): return !drone.will_be_destroyed).size()
