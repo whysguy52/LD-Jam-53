@@ -11,6 +11,7 @@ var max_drones = INITIAL_MAX_DRONES
 
 @onready var drones_node = get_parent().get_node('drones')
 @onready var level_node = get_parent().get_node("level")
+@onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 
 func spawn_box():
   if $box_location/spawn.get_child_count() > 0:
@@ -41,6 +42,7 @@ func spawn_drone():
   var drone = drone_scene.instantiate()
 
   get_parent().get_node('drones').add_child(drone)
+  ui.update_ui()
 
   drone.global_position = $drone_spawn_location.global_position
   drone.pickup_box(box)
@@ -48,7 +50,18 @@ func spawn_drone():
   var house = box.delivery_area.get_parent()
   house.get_node('house_arrow').hide()
 
+
 func _on_box_timer_timeout():
   $box_timer.stop()
   $box_timer.start(randf_range(MIN_BOX_TIMER, MAX_BOX_TIMER))
   spawn_box()
+
+func buy_drone():
+  max_drones += 1
+  ui.update_ui()
+
+func working_drones_count():
+  if !drones_node:
+    return 0
+
+  return drones_node.get_child_count()
