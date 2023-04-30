@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbvtkgpxo5qku"]
 
 [ext_resource type="Script" path="res://objs/warehouse/warehouse.gd" id="1_3a48e"]
-[ext_resource type="Material" path="res://assets/3d/box/test_transparency.tres" id="1_beav6"]
+[ext_resource type="Material" uid="uid://dgmwhjrt4i3gx" path="res://assets/3d/box/test_transparency.tres" id="1_beav6"]
 [ext_resource type="PackedScene" uid="uid://dpwr2gpbjvfx5" path="res://assets/3d/warehouse/warehouse.blend" id="2_0i80k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kgiv5"]
@@ -21,8 +21,12 @@ surface_material_override/0 = ExtResource("1_beav6")
 [node name="spawn" type="Node3D" parent="box_location"]
 
 [node name="box_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 19.0
+autostart = true
+
+[node name="initial_box_timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
 [connection signal="timeout" from="box_timer" to="." method="_on_box_timer_timeout"]
+[connection signal="timeout" from="initial_box_timer" to="." method="_on_initial_box_timer_timeout"]
