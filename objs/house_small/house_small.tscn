@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objs/house_small/house_small.gd" id="1_bfuu5"]
 [ext_resource type="PackedScene" uid="uid://bccpaondqqptg" path="res://assets/3d/houses/house_small.blend" id="1_smmhu"]
-[ext_resource type="Material" uid="uid://dgmwhjrt4i3gx" path="res://assets/3d/box/test_transparency.tres" id="2_hd3fh"]
+[ext_resource type="Material" path="res://assets/3d/box/test_transparency.tres" id="2_hd3fh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7xnos"]
 

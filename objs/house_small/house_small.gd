@@ -5,12 +5,12 @@ var selection_material_overlay = preload("res://assets/3d/houses/selection_mater
 var is_hovered = false
 
 func _on_selection_area_mouse_entered():
-  hover(true)
+  set_hover(true)
 
 func _on_selection_area_mouse_exited():
-  hover(false)
+  set_hover(false)
 
-func hover(hover: bool):
+func set_hover(hover: bool):
   $mesh/Cube.material_overlay = selection_material_overlay if hover else null
   is_hovered = hover
 
