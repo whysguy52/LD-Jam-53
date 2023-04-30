@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cep0s6mlsywln"]
+[gd_scene load_steps=10 format=3 uid="uid://cep0s6mlsywln"]
 
 [ext_resource type="PackedScene" uid="uid://b06x4qlaxe0dk" path="res://assets/3d/tiles/road_1.blend" id="1_xh2xb"]
 [ext_resource type="PackedScene" uid="uid://c66gt1qemn6xh" path="res://assets/3d/tiles/empty_lot.blend" id="2_88doc"]
 [ext_resource type="PackedScene" uid="uid://cchqg0iaekqsj" path="res://assets/3d/tiles/intersection.blend" id="3_slpg1"]
 [ext_resource type="PackedScene" uid="uid://co1ys222etaar" path="res://assets/3d/drone_tower/drone_tower.blend" id="4_rbvqh"]
+[ext_resource type="Script" path="res://objs/tiles/map_cell_drone_tower.gd" id="5_m3cv1"]
 [ext_resource type="PackedScene" uid="uid://bt7wx47mdjj1u" path="res://assets/3d/drone_tower/drone_tower_head.blend" id="5_poqwe"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fgp4k"]
+height = 20.0
+radius = 141.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6bo45"]
+top_radius = 141.0
+bottom_radius = 141.0
+height = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyh0x"]
+transparency = 1
+albedo_color = Color(0.537255, 0.85098, 0.811765, 0.0980392)
 
 [node name="map_cell_drone_tower" type="Node3D"]
 
@@ -62,8 +76,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -1)
 [node name="road_8" parent="." instance=ExtResource("1_xh2xb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 5)
 
-[node name="drone_tower" parent="." instance=ExtResource("4_rbvqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-
 [node name="drone_tower_head" parent="." instance=ExtResource("5_poqwe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 2)
+
+[node name="drone_tower" type="Area3D" parent="."]
+script = ExtResource("5_m3cv1")
+
+[node name="drone_tower" parent="drone_tower" instance=ExtResource("4_rbvqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="drone_tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+shape = SubResource("CylinderShape3D_fgp4k")
+
+[node name="drone_radius_view" type="MeshInstance3D" parent="drone_tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+mesh = SubResource("CylinderMesh_6bo45")
+surface_material_override/0 = SubResource("StandardMaterial3D_gyh0x")
