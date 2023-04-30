@@ -13,3 +13,10 @@ func _on_selection_area_mouse_exited():
 func hover(hover: bool):
   $mesh/Cube.material_overlay = selection_material_overlay if hover else null
   is_hovered = hover
+
+func _input(event):
+  if is_hovered and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
+    click()
+
+func click():
+  print('>>> clicked house')
