@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwf1owx3fa8xc"]
+[gd_scene load_steps=2 format=3 uid="uid://boje38cyg885n"]
 
-[ext_resource type="Script" path="res://scenes/interface/ui_to_house_arrow.gd" id="1_1daef"]
 [ext_resource type="PackedScene" uid="uid://b4d4rnmgth6ai" path="res://assets/3d/ui_arrows/to_house_arrow/ui_house_arrow.blend" id="1_js6b5"]
 
 [node name="ui_to_house_arrow" type="Node3D"]
-script = ExtResource("1_1daef")
 
 [node name="ui_house_arrow" parent="." instance=ExtResource("1_js6b5")]

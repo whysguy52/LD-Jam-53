@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://objs/camera_controller/camera_controller.gd" id="1_87lhv"]
 [ext_resource type="PackedScene" uid="uid://c4dhcvii0mvng" path="res://scenes/interface/user_interface.tscn" id="2_cmvxj"]
-[ext_resource type="PackedScene" uid="uid://djrv3c5yn1kle" path="res://scenes/interface/money_ui.tscn" id="3_17j7s"]
-[ext_resource type="PackedScene" uid="uid://cwf1owx3fa8xc" path="res://scenes/interface/ui_arrow.tscn" id="4_0iscl"]
+[ext_resource type="PackedScene" uid="uid://c5rsqhk2xscsx" path="res://scenes/interface/money_ui.tscn" id="3_17j7s"]
+[ext_resource type="PackedScene" uid="uid://boje38cyg885n" path="res://scenes/interface/ui_arrow.tscn" id="4_0iscl"]
 
 [node name="camera_controller" type="Node3D"]
 script = ExtResource("1_87lhv")
