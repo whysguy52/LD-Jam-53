@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://mlcgi5ggl1xj" path="res://objs/tiles/map_cell1.tscn" id="1_6mhsh"]
 
 [node name="map_cell_house_grid" type="Node3D"]
-visible = false
 
 [node name="map2" parent="." instance=ExtResource("1_6mhsh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)

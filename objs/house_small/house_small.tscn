@@ -13,6 +13,7 @@
 
 [node name="delivery_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
+collision_layer = 2
 
 [node name="mesh" type="MeshInstance3D" parent="delivery_area"]
 mesh = SubResource("BoxMesh_7xnos")

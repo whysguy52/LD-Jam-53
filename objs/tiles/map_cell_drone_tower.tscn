@@ -9,11 +9,11 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fgp4k"]
 height = 20.0
-radius = 141.0
+radius = 80.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6bo45"]
-top_radius = 141.0
-bottom_radius = 141.0
+top_radius = 80.0
+bottom_radius = 80.0
 height = 20.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyh0x"]
@@ -80,6 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 2)
 
 [node name="drone_tower" type="Area3D" parent="."]
+collision_mask = 2
 script = ExtResource("5_m3cv1")
 
 [node name="drone_tower" parent="drone_tower" instance=ExtResource("4_rbvqh")]
@@ -87,11 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
-visible = false
 shape = SubResource("CylinderShape3D_fgp4k")
 
 [node name="drone_radius_view" type="MeshInstance3D" parent="drone_tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
-visible = false
 mesh = SubResource("CylinderMesh_6bo45")
 surface_material_override/0 = SubResource("StandardMaterial3D_gyh0x")
