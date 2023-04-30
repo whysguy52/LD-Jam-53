@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxfj57iw5gu7a"]
+[gd_scene load_steps=4 format=3 uid="uid://bxfj57iw5gu7a"]
 
 [ext_resource type="Script" path="res://objs/drone/drone.gd" id="1_7mfh7"]
 [ext_resource type="PackedScene" uid="uid://djw3cippc3dro" path="res://assets/3d/delivery_drone/Delivery_Drone.blend" id="1_yk1mm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_engpj"]
 size = Vector3(3, 1.5, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7gkfa"]
-size = Vector3(1, 2, 1)
 
 [node name="drone" type="CharacterBody3D"]
 script = ExtResource("1_7mfh7")
@@ -17,8 +14,5 @@ script = ExtResource("1_7mfh7")
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_engpj")
 
-[node name="area" type="Area3D" parent="."]
-
-[node name="collision" type="CollisionShape3D" parent="area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_7gkfa")
+[node name="box_location" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
