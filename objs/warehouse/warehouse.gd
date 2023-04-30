@@ -4,6 +4,7 @@ extends Node3D
 var box_scene = preload("res://objs/box/box.tscn")
 var drone_scene = preload("res://objs/drone/drone.tscn")
 
+
 var MIN_BOX_TIMER = 3
 var MAX_BOX_TIMER = 15
 var INITIAL_MAX_DRONES = 3
@@ -12,6 +13,7 @@ var max_drones = INITIAL_MAX_DRONES
 @onready var drones_node = get_parent().get_node('drones')
 @onready var level_node = get_parent().get_node("level")
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
+@onready var camera_controller = get_node("/root/world/camera_controller")
 
 func spawn_box():
   if $box_location/spawn.get_child_count() > 0:
@@ -21,7 +23,10 @@ func spawn_box():
   var delivery_area = level_node.delivery_areas.pick_random()
   var house = delivery_area.get_parent()
 
+
   house.get_node('house_arrow').show()
+
+  camera_controller.show_ui_arrow()
 
   box.delivery_area = delivery_area
 
@@ -49,6 +54,8 @@ func spawn_drone():
 
   var house = box.delivery_area.get_parent()
   house.get_node('house_arrow').hide()
+  camera_controller.hide_ui_arrow()
+
 
 
 func _on_box_timer_timeout():

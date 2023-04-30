@@ -65,3 +65,9 @@ func zoom(amount):
 
 func zoom_factor():
   return $camera.size / ZOOM_DEFAULT
+
+func show_ui_arrow():
+  $camera/ui_arrow.show()
+
+func hide_ui_arrow():
+  $camera/ui_arrow.hide()
