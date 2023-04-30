@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdwbmbc8dyngo"]
+
+[ext_resource type="Script" path="res://scenes/interface/ui_buttons.gd" id="1_6vijk"]
+[ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="1_poj5n"]
+[ext_resource type="Texture2D" uid="uid://dm7basocv5eyc" path="res://assets/2d/ui/icons/drone_icon.png" id="2_phk55"]
+[ext_resource type="Texture2D" uid="uid://b6mnjej6f7wpc" path="res://assets/2d/ui/icons/drone_icon_pressed.png" id="3_q4u0o"]
+
+[node name="buttons" type="HBoxContainer"]
+offset_right = 106.0
+offset_bottom = 32.0
+alignment = 2
+script = ExtResource("1_6vijk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_poj5n")
+theme_override_font_sizes/font_size = 16
+text = "BUY:"
+
+[node name="buy_button" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("2_phk55")
+texture_pressed = ExtResource("3_q4u0o")
+
+[connection signal="pressed" from="buy_button" to="." method="_on_buy_button_pressed"]

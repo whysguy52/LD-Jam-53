@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://5gsfaig0vr4" path="res://assets/2d/ui/ui_background.png" id="1_ibuv3"]
 [ext_resource type="Texture2D" uid="uid://dm7basocv5eyc" path="res://assets/2d/ui/icons/drone_icon.png" id="2_yg00l"]
 [ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="3_81uii"]
-[ext_resource type="Texture2D" uid="uid://b6mnjej6f7wpc" path="res://assets/2d/ui/icons/drone_icon_pressed.png" id="4_lde8u"]
+[ext_resource type="PackedScene" uid="uid://bdwbmbc8dyngo" path="res://scenes/interface/ui_buttons.tscn" id="5_mrkbf"]
 
 [node name="user_interface" type="Control"]
 layout_mode = 3
-anchor_top = 0.816
+anchor_top = 0.907
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.231995
+offset_top = 0.263977
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_gjny0")
@@ -30,63 +30,48 @@ expand_mode = 1
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 151.0
-offset_bottom = 110.0
+offset_right = 270.0
+offset_bottom = 44.0
 
 [node name="TextureRect" type="TextureRect" parent="h_info_container"]
 layout_mode = 2
 texture = ExtResource("2_yg00l")
-expand_mode = 2
 stretch_mode = 4
 
 [node name="max_label" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "MAX="
 
 [node name="max_value" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 18
 text = "3"
 
 [node name="available_label" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "   Available="
 
 [node name="available_value" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 18
 text = "3"
 
-[node name="buttons" type="HBoxContainer" parent="."]
+[node name="buttons" parent="." instance=ExtResource("5_mrkbf")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -462.0
-offset_top = -49.5
-offset_right = -7.0
-offset_bottom = 50.5
+offset_left = -106.0
+offset_top = -16.0
+offset_right = 0.0
+offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="buttons"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_81uii")
-theme_override_font_sizes/font_size = 35
-text = "BUY:"
-
-[node name="buy_button" type="TextureButton" parent="buttons"]
-layout_mode = 2
-texture_normal = ExtResource("2_yg00l")
-texture_pressed = ExtResource("4_lde8u")
-
-[connection signal="pressed" from="buttons/buy_button" to="." method="_on_buy_button_pressed"]
