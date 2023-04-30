@@ -37,13 +37,25 @@ texture = ExtResource("2_yg00l")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="equal_icon" type="Label" parent="h_info_container"]
+[node name="max_label" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 20
+text = "MAX="
+
+[node name="delivery_drone_count_display" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 35
-text = "="
+text = "3"
 
-[node name="delivery_drone_count_display" type="Label" parent="h_info_container"]
+[node name="max_label2" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 20
+text = "   Available="
+
+[node name="max_label3" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 35
