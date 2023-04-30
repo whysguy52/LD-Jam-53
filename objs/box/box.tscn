@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn868fx4bci6h"]
+[gd_scene load_steps=3 format=3 uid="uid://dn868fx4bci6h"]
 
 [ext_resource type="PackedScene" uid="uid://d2xu3si3f5wo0" path="res://assets/3d/box/Box.blend" id="1_bwmvr"]
+[ext_resource type="Script" path="res://objs/box/box.gd" id="1_wgpal"]
 
 [node name="box" type="Node3D"]
+script = ExtResource("1_wgpal")
 
 [node name="mesh" parent="." instance=ExtResource("1_bwmvr")]

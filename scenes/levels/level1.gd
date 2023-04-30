@@ -15,31 +15,12 @@ func _ready():
   towers.append(get_node("Node3D16/map/drone_tower"))
   towers.append(get_node("Node3D17/map/drone_tower"))
 
+  # TODO: figure out how to correctly init, without 0.5 init timer
+
+func init_delivery_areas():
   for tower in towers:
-    if tower.isEnabled == true:
-      #print("count: ", tower.get_delivery_areas().size())
-      #delivery_areas.append_array(tower.get_delivery_areas())
-      pass
-
-  for target in delivery_areas:
-    target.scale.x = 10
-    target.scale.y = 10
-    target.scale.z = 10
-  #print("delivery_areas: ", delivery_areas.size())
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-  if Input.is_action_just_pressed("space_tester"):
-    delivery_areas.clear()
-    for tower in towers:
       if tower.isEnabled == true:
-        print("count: ", tower.get_delivery_areas().size())
         delivery_areas.append_array(tower.get_delivery_areas())
 
-    for target in delivery_areas:
-      target.scale.x += 5
-      target.scale.y += 5
-      target.scale.z += 5
-
+func _on_init_delivery_areas_timer_timeout():
+  init_delivery_areas()

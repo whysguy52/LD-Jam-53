@@ -5,8 +5,8 @@ const SPEED = 666
 const DISTANCE_THRESHOLD = 0.3
 
 var destination_position : Vector3 = Vector3.ZERO
-var box_to_pickup : Node3D = null
-var box_to_deliver : Node3D = null
+var box_to_pickup = null # NOTE: this is a Box, dunno how to import class/script type names yet
+var box_to_deliver = null # NOTE: this is a Box, dunno how to import class/script type names yet
 var deliver_box_location : Node3D = null
 var go_to_height = false
 var go_to_warehouse = false
@@ -110,14 +110,8 @@ func movement_deliver(delta):
     return
 
   if !deliver_box_location:
-    # TODO: get a random house, in the radius of drone tower
-    var world = get_parent().get_parent()
-    var houses = world.get_node("level/Node3D2/map2/houses")
-    var house = houses.get_children().pick_random()
-    var box_location = house.get_node("delivery_area")
-
-    deliver_box_location = box_location
-    destination_position = box_location.global_position
+    deliver_box_location = box_to_deliver.delivery_area
+    destination_position = box_to_deliver.delivery_area.global_position
   else:
     # found a deliver_box_location, move x,z there
     if !move_laterally(delta):

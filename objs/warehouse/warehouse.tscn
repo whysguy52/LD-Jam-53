@@ -21,7 +21,6 @@ surface_material_override/0 = ExtResource("1_beav6")
 [node name="spawn" type="Node3D" parent="box_location"]
 
 [node name="box_timer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="drone_timer" type="Timer" parent="."]

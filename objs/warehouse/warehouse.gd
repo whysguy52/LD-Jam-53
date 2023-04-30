@@ -8,13 +8,18 @@ var MIN_BOX_TIMER = 3
 var MAX_BOX_TIMER = 15
 var INITIAL_MAX_DRONES = 3
 var max_drones = INITIAL_MAX_DRONES
+
 @onready var drones_node = get_parent().get_node('drones')
+@onready var level_node = get_parent().get_node("level")
 
 func spawn_box():
   if $box_location/spawn.get_child_count() > 0:
     return
 
   var box = box_scene.instantiate()
+  var delivery_area = level_node.delivery_areas.pick_random()
+
+  box.delivery_area = delivery_area
 
   $box_location/spawn.add_child(box)
 
@@ -41,7 +46,6 @@ func _on_box_timer_timeout():
   $box_timer.stop()
   $box_timer.start(randf_range(MIN_BOX_TIMER, MAX_BOX_TIMER))
   spawn_box()
-
 
 func _on_drone_timer_timeout():
   spawn_drone()

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qajccli1b1a0" path="res://objs/tiles/map_cell_house_grid.tscn" id="2_mc0uj"]
 [ext_resource type="PackedScene" uid="uid://du0f61j2v8mhm" path="res://objs/tiles/map_cell_house_grid_w_tower.tscn" id="3_1ci6t"]
 
-[node name="Map1" type="Node3D"]
+[node name="level1" type="Node3D"]
 script = ExtResource("1_7xncj")
 
 [node name="Node3D" parent="." instance=ExtResource("1_0omfc")]
@@ -81,3 +81,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216, 0, 90)
 
 [node name="Node3D25" parent="." instance=ExtResource("2_mc0uj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216, 0, -90)
+
+[node name="init_delivery_areas_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="init_delivery_areas_timer" to="." method="_on_init_delivery_areas_timer_timeout"]
