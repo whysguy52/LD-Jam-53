@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://djrv3c5yn1kle"]
+[gd_scene load_steps=5 format=3 uid="uid://c5rsqhk2xscsx"]
 
+[ext_resource type="Script" path="res://scenes/interface/money_ui.gd" id="1_dbfy3"]
 [ext_resource type="Texture2D" uid="uid://5gsfaig0vr4" path="res://assets/2d/ui/ui_background.png" id="1_gvv75"]
 [ext_resource type="Texture2D" uid="uid://bhgl1waghcn4t" path="res://assets/2d/ui/icons/money_icon.png" id="1_s6020"]
 [ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="2_0ujnc"]
@@ -9,31 +10,32 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_dbfy3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 82.0
+offset_right = 161.0
 offset_bottom = 42.0
 texture = ExtResource("1_gvv75")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="h_box" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="h_box"]
 layout_mode = 2
 texture = ExtResource("1_s6020")
 expand_mode = 2
 
-[node name="equals_sign" type="Label" parent="HBoxContainer"]
+[node name="equals_sign" type="Label" parent="h_box"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0ujnc")
 theme_override_font_sizes/font_size = 16
 text = "="
 
-[node name="money_counter_display" type="Label" parent="HBoxContainer"]
+[node name="money_value" type="Label" parent="h_box"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0ujnc")
 theme_override_font_sizes/font_size = 16

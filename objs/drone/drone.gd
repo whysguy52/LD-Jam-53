@@ -12,7 +12,8 @@ var go_to_height = false
 var go_to_warehouse = false
 var will_be_destroyed = false
 
-@onready var drone_spawn_location = get_parent().get_parent().get_node('warehouse/drone_spawn_location')
+@onready var warehouse = get_node('/root/world/warehouse')
+@onready var drone_spawn_location = get_node('/root/world/warehouse/drone_spawn_location')
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 
 func _physics_process(delta):
@@ -128,6 +129,7 @@ func movement_deliver(delta):
     # reached box x,z
     if $box_location.global_position.distance_to(deliver_box_location.global_position) < DISTANCE_THRESHOLD:
       # deliver box and prep to go to height
+      warehouse.delivered_box()
       box_to_deliver.reparent(deliver_box_location)
       box_to_deliver = null
       go_to_height = true
