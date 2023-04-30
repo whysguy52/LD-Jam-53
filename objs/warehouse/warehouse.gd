@@ -30,6 +30,7 @@ func spawn_box():
   var house = delivery_area.get_parent()
   house.get_node('house_arrow').show()
   camera_controller.show_ui_arrow()
+  camera_controller.set_direction(house.global_position)
 
   box.delivery_area = delivery_area
 

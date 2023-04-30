@@ -9,6 +9,7 @@ const ZOOM_MAX = 150
 
 var input_movement_vector = Vector2()
 var is_disabled = false
+var next_house = null
 
 func _ready():
   $camera.size = ZOOM_DEFAULT
@@ -19,6 +20,9 @@ func _physics_process(delta):
 
   process_input()
   process_movement(delta)
+
+  if next_house != null:
+    $camera/ui_arrow.look_at(next_house)
 
 func process_input():
   input_movement_vector = Vector2()
@@ -71,3 +75,6 @@ func show_ui_arrow():
 
 func hide_ui_arrow():
   $camera/ui_arrow.hide()
+
+func set_direction(pointTo: Vector3):
+  next_house = pointTo

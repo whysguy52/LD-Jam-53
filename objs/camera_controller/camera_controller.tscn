@@ -19,6 +19,5 @@ size = 50.0
 [node name="money_ui" parent="camera" instance=ExtResource("3_17j7s")]
 
 [node name="ui_arrow" parent="camera" instance=ExtResource("4_0iscl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000152588, -889.534)
 visible = false
-script = null
