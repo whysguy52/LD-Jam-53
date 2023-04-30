@@ -17,7 +17,12 @@ func _physics_process(delta):
 
 func movement(delta):
   if destination_position == Vector3.ZERO:
+    if $audio_movement.playing:
+      $audio_movement.stop()
     return
+
+  if !$audio_movement.playing:
+    $audio_movement.play()
 
   movement_pickup(delta)
   movement_deliver(delta)

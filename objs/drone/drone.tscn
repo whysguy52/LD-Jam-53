@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxfj57iw5gu7a"]
+[gd_scene load_steps=5 format=3 uid="uid://bxfj57iw5gu7a"]
 
 [ext_resource type="Script" path="res://objs/drone/drone.gd" id="1_7mfh7"]
 [ext_resource type="PackedScene" uid="uid://djw3cippc3dro" path="res://assets/3d/delivery_drone/Delivery_Drone.blend" id="1_yk1mm"]
+[ext_resource type="AudioStream" uid="uid://cm0kf6yv8v5iu" path="res://assets/audio/drone_propellers.wav" id="3_0h1xf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_engpj"]
 size = Vector3(3, 1.5, 3)
@@ -17,3 +18,8 @@ shape = SubResource("BoxShape3D_engpj")
 
 [node name="box_location" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="audio_movement" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_0h1xf")
+volume_db = 12.973
+doppler_tracking = 2
