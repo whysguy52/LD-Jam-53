@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
+const FLY_HEIGHT = 10
 const SPEED = 333
 
 var box_to_pickup : Node3D = null
+
+func _ready():
+  transform.origin.y = FLY_HEIGHT
 
 func _physics_process(delta):
   var current_position = global_position
