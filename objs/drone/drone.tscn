@@ -7,6 +7,7 @@
 size = Vector3(3, 1.5, 3)
 
 [node name="drone" type="CharacterBody3D"]
+collision_mask = 0
 script = ExtResource("1_7mfh7")
 
 [node name="mesh" parent="." instance=ExtResource("1_yk1mm")]
