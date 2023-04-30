@@ -16,20 +16,16 @@ size = 45.0
 
 [node name="user_interface" type="Control" parent="camera"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = 0.009
+anchor_top = 0.832
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -10.368
+offset_top = -0.135986
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="bottom_control" type="Control" parent="camera/user_interface"]
-layout_mode = 1
-anchor_top = 0.818
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.0640259
-
-[node name="TextureRect" type="TextureRect" parent="camera/user_interface/bottom_control"]
+[node name="TextureRect" type="TextureRect" parent="camera/user_interface"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +36,7 @@ grow_vertical = 2
 texture = ExtResource("2_ovycn")
 expand_mode = 1
 
-[node name="h_info_container" type="HBoxContainer" parent="camera/user_interface/bottom_control"]
+[node name="h_info_container" type="HBoxContainer" parent="camera/user_interface"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -48,19 +44,19 @@ anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = -9.90204
 
-[node name="TextureRect" type="TextureRect" parent="camera/user_interface/bottom_control/h_info_container"]
+[node name="TextureRect" type="TextureRect" parent="camera/user_interface/h_info_container"]
 layout_mode = 2
 texture = ExtResource("3_0k05t")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="equal_icon" type="Label" parent="camera/user_interface/bottom_control/h_info_container"]
+[node name="equal_icon" type="Label" parent="camera/user_interface/h_info_container"]
 layout_mode = 2
 text = "="
 
-[node name="delivery_drone_count_display" type="Label" parent="camera/user_interface/bottom_control/h_info_container"]
+[node name="delivery_drone_count_display" type="Label" parent="camera/user_interface/h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qhmfy")
 text = "3"
