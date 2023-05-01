@@ -22,7 +22,7 @@ func _process(_delta):
     return
   enemy_count = world_enemies.get_child_count()
   if enemy_count == 0 and timer.is_stopped():
-    timer.wait_time = rng.randi_range(10,15)
+    timer.wait_time = rng.randi_range(20,30)
     num_to_spawn = rng.randi_range(1,max_to_spawn)
     timer.start()
 
