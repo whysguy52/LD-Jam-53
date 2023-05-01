@@ -87,10 +87,16 @@ func buy_tower(tower):
   if money < PRICE_TOWER:
     return
 
+  if !tower:
+    ui_buttons.get_node('buy_tower_button').hide()
+    return
+
   tower.isEnabled = true
   money -= PRICE_TOWER
-  level_node.init_delivery_areas()
+  money_ui.update_ui()
   ui_buttons.get_node('buy_tower_button').hide()
+  level_node.init_delivery_areas()
+
 
 func working_drones_count():
   if !drones_node:
