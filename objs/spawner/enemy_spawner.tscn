@@ -6,11 +6,11 @@
 [node name="enemy_spawner" type="Node3D"]
 script = ExtResource("1_u3ruw")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="alarm_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_eo14y")
-volume_db = -10.0
+volume_db = -25.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

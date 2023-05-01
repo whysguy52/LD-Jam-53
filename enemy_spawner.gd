@@ -1,40 +1,31 @@
 extends Node3D
 
+const SPAWN_TIMER_MIN = 20
+const SPAWN_TIMER_MAX = 30
+const RADIUS_OF_SPAWN = 270
+
 var enemy_scene = preload("res://objs/drone/enemy_combat_drone.tscn")
-var timer
-var enemy_count = 0
-var rng
-var world_enemies
-var num_to_spawn
-var max_to_spawn = 1
-var angle_of_spawn
-var radius_of_spawn = 270
 
-# Called when the node enters the scene tree for the first time.
+@onready var world_enemies = get_parent().get_node('enemies')
+
 func _ready():
-  timer = $Timer
-  rng = RandomNumberGenerator.new()
-  world_enemies = get_parent().get_node("enemies")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-  if visible == false:
-    return
-  enemy_count = world_enemies.get_child_count()
-  if enemy_count == 0 and timer.is_stopped():
-    timer.wait_time = rng.randi_range(20,30)
-    num_to_spawn = rng.randi_range(1,max_to_spawn)
-    timer.start()
+  $timer.wait_time = randi_range(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)
+  $timer.start()
 
 func _on_timer_timeout():
-  angle_of_spawn = deg_to_rad(rng.randi_range(1,360))
-  $alarm_sound.play()
+  if world_enemies.get_child_count() > 0:
+    $timer.wait_time = 1
+    $timer.start()
+    return
+
+  var angle_of_spawn = deg_to_rad(randi_range(1, 360))
+  var num_to_spawn = [1, 1, 1, 1, 1, 2, 2].pick_random()
 
   for i in num_to_spawn:
-    var deviation = rng.randi_range(-10, 10)
+    var deviation = randi_range(-10, 10)
     var border_location = Vector3()
-    border_location.x = radius_of_spawn * cos(angle_of_spawn) + deviation
-    border_location.z = radius_of_spawn * sin(angle_of_spawn) + deviation
+    border_location.x = RADIUS_OF_SPAWN * cos(angle_of_spawn) + deviation
+    border_location.z = RADIUS_OF_SPAWN * sin(angle_of_spawn) + deviation
     var enemy = enemy_scene.instantiate()
     world_enemies.add_child(enemy)
 
@@ -42,4 +33,6 @@ func _on_timer_timeout():
     enemy.global_position.z = border_location.z
     #don't do y or else height might get screwed up
 
-  enemy_count += 1
+  $alarm_sound.play()
+  $timer.wait_time = randi_range(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)
+  $timer.start()
