@@ -133,7 +133,7 @@ func deployed_def_drones_count():
   return def_drones_node.get_children().filter(func(def_drone): return !def_drone.will_be_destroyed).size()
 
 func deploy_def_drone():
-  if def_drones_node.get_child_count() >= max_drones :
+  if def_drones_node.get_child_count() >= max_drones or get_parent().get_node("enemies").get_child_count() == 0 :
     $audio_error.play()
     return
 
