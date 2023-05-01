@@ -18,6 +18,7 @@ var will_be_destroyed = false
 
 func _physics_process(delta):
   movement(delta)
+  #print("Drone height: ",global_position.y)
 
 func movement(delta):
   if destination_position == Vector3.ZERO:

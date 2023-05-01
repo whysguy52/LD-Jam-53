@@ -19,6 +19,7 @@ func _ready():
 
 func _physics_process(delta):
   movement(delta)
+  #print("Drone height: ",global_position.y)
 
 func movement(delta):
   if target_acquired == null:
@@ -37,7 +38,6 @@ func movement(delta):
     move_laterally(delta)
     movement_go_to_warehouse(delta)
     move_and_slide()
-
 
 func move_laterally(delta):
   var horz_position = global_position
@@ -112,7 +112,6 @@ func update_target_position():
 
 func _on_area_3d_body_entered(body):
   var is_enemy_drone
-  print(body.name)
   if "enemy_drone" in body.name:
     is_enemy_drone = true
   else:

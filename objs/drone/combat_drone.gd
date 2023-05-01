@@ -17,6 +17,7 @@ func _physics_process(delta):
   if visible == false:
     return
   movement(delta)
+  #print("Drone height: ",global_position.y)
 
 func movement(delta):
   if target_acquired == null:
