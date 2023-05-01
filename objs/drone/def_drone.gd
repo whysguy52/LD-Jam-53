@@ -6,7 +6,6 @@ const DISTANCE_THRESHOLD = 10
 var destination_position : Vector3 = Vector3.ZERO
 
 var target_acquired: Object
-var target_to_kill
 var will_be_destroyed = false
 var go_to_warehouse = false
 
@@ -90,6 +89,14 @@ func move_down_to(node, delta):
     velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 
 func find_nearest_target():
+
+  #first check if something is already near
+  var bodies_near_by = $Area3D.get_overlapping_bodies()
+  for body in bodies_near_by:
+    if "enemy_drone" in body.name:
+      target_acquired = body
+      $Timer.start()
+      return
   var list_of_enemy_drones = get_node('/root/world/enemies').get_children()
   if list_of_enemy_drones.size() == 0:
     target_acquired = drone_spawn_location
@@ -111,20 +118,17 @@ func update_target_position():
     #else (if check_dist is greater than min_dist, do nothing)
 
 func _on_area_3d_body_entered(body):
-  var is_enemy_drone
-  if "enemy_drone" in body.name:
-    is_enemy_drone = true
+  if "enemy_drone" in target_acquired.name:
+    $Timer.start()
   else:
-    return
-
-  target_to_kill = body
-  $Timer.start()
-  pass # Replace with function body.
+    target_acquired = body
+    $Timer.start()
 
 func _on_timer_timeout():
-  if target_to_kill == null:
-    return
-  target_to_kill.kill()
+  print("timeout target: ", target_acquired.name)
+  if "enemy_drone" in target_acquired.name:
+    print("killing")
+    target_acquired.kill()
 
 func kill():
   will_be_destroyed = true

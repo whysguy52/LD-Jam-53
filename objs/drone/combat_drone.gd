@@ -63,6 +63,15 @@ func move_laterally(delta):
     return true
 
 func find_nearest_target():
+
+  #first check if something is already near
+  var bodies_near_by = $Area3D.get_overlapping_bodies()
+  for body in bodies_near_by:
+    if "def_drone" in body.name:
+      target_acquired = body
+      $Timer.start()
+      return
+
   var list_of_del_drones = get_node('/root/world/drones').get_children()
   var min_dist = 0
   var check_dist = 0
@@ -77,17 +86,11 @@ func update_target_position():
   destination_position = target_acquired.global_position
 
 func _on_area_3d_body_entered(body):
-
-  if target_acquired == null:
+  if "def_drone" in target_acquired.name:
+    return #already targeting a def drone
+  else:
     target_acquired = body
-  elif "def_drone" in body.name and !("def_drone" in target_acquired):
-    target_acquired = body
-
-  print("targeting: ", body)
-
-  $Timer.start()
-  pass # Replace with function body.
-
+    $Timer.start()
 
 func _on_timer_timeout():
   if target_acquired == null:
