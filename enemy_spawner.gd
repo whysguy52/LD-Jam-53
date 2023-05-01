@@ -18,6 +18,7 @@ func _ready():
 func _process(_delta):
   if visible == false:
     return
+  enemy_count = world_enemies.get_child_count()
   if enemy_count == 0 and timer.is_stopped():
     timer.wait_time = rng.randi_range(10,15)
     num_to_spawn = rng.randi_range(1,max_to_spawn)

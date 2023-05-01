@@ -122,6 +122,8 @@ func _on_area_3d_body_entered(body):
   pass # Replace with function body.
 
 func _on_timer_timeout():
+  if target_to_kill == null:
+    return
   target_to_kill.kill()
 
 func kill():

@@ -77,18 +77,19 @@ func update_target_position():
   destination_position = target_acquired.global_position
 
 func _on_area_3d_body_entered(body):
-  var isDrone
-  if "drone" in body.name:
-    isDrone = true
-  else:
-    isDrone = false
-  print(body.name)
-  target_to_kill = body
+
+  if target_to_kill == null:
+    target_to_kill = body
+  elif "def_drone" in body.name and !("def_drone" in target_to_kill):
+    target_acquired = body
+
   $Timer.start()
   pass # Replace with function body.
 
 
 func _on_timer_timeout():
+  if target_to_kill == null:
+    return
   target_to_kill.kill()
 
 func kill():
