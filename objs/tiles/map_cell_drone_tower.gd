@@ -6,6 +6,8 @@ var delivery_areas = Array()
 var isEnabled = false
 var is_hovered = false
 
+@onready var ui_buttons = get_node('/root/world/camera_controller/camera/user_interface/buttons')
+
 func set_enabled(enabledSet: bool):
   isEnabled = enabledSet
   $collision.visible = isEnabled
@@ -37,13 +39,15 @@ func _input(event):
     click()
 
 func _on_selection_area_mouse_entered():
-  if isEnabled:
-    set_hover(true)
+  set_hover(true)
 
 func _on_selection_area_mouse_exited():
-  if isEnabled:
-    set_hover(false)
+  set_hover(false)
 
 func click():
   if isEnabled:
-    toggle_view_radius()
+    if is_hovered:
+      toggle_view_radius()
+  else:
+    ui_buttons.get_node('buy_tower_button').visible = !ui_buttons.get_node('buy_tower_button').visible
+    ui_buttons.tower_to_buy = self

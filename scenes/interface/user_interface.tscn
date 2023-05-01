@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5gsfaig0vr4" path="res://assets/2d/ui/ui_background.png" id="1_ibuv3"]
 [ext_resource type="Texture2D" uid="uid://dm7basocv5eyc" path="res://assets/2d/ui/icons/drone_icon.png" id="2_yg00l"]
 [ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="3_81uii"]
-[ext_resource type="PackedScene" uid="uid://bdwbmbc8dyngo" path="res://scenes/interface/ui_buttons.tscn" id="5_mrkbf"]
+[ext_resource type="PackedScene" uid="uid://dr7xn2jkohdii" path="res://scenes/interface/ui_buttons.tscn" id="5_mrkbf"]
 
 [node name="user_interface" type="Control"]
 layout_mode = 3

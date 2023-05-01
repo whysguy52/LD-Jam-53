@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdwbmbc8dyngo"]
+[gd_scene load_steps=5 format=3 uid="uid://dr7xn2jkohdii"]
 
 [ext_resource type="Script" path="res://scenes/interface/ui_buttons.gd" id="1_6vijk"]
 [ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="1_poj5n"]
@@ -18,10 +18,18 @@ theme_override_fonts/font = ExtResource("1_poj5n")
 theme_override_font_sizes/font_size = 16
 text = "BUY:"
 
-[node name="buy_button" type="TextureButton" parent="."]
+[node name="buy_drone_button" type="TextureButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("2_phk55")
 texture_pressed = ExtResource("3_q4u0o")
 
-[connection signal="pressed" from="buy_button" to="." method="_on_buy_button_pressed"]
+[node name="buy_tower_button" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("2_phk55")
+texture_pressed = ExtResource("3_q4u0o")
+
+[connection signal="pressed" from="buy_drone_button" to="." method="_on_buy_drone_button_pressed"]
+[connection signal="pressed" from="buy_tower_button" to="." method="_on_buy_tower_button_pressed"]

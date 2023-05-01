@@ -5,7 +5,7 @@ var selection_material_overlay = preload("res://assets/3d/houses/selection_mater
 var is_hovered = false
 
 func deliver_box(box):
-  box.reparent($delivery_area/boxes)
+  box.reparent($delivery_area/  boxes)
   $remove_delivery_timer.start()
 
 func _on_selection_area_mouse_entered():

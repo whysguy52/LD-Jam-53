@@ -18,6 +18,8 @@ func _ready():
   # TODO: figure out how to correctly init, without 0.5 init timer
 
 func init_delivery_areas():
+  delivery_areas.clear()
+
   for tower in towers:
       if tower.isEnabled == true:
         delivery_areas.append_array(tower.get_delivery_areas())
