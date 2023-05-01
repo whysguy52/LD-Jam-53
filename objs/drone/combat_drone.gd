@@ -22,16 +22,16 @@ func movement(delta):
   else:
     update_target_position()
 
-    if destination_position == Vector3.ZERO:
-      if $audio_movement.playing:
-        $audio_movement.stop()
-      return
+  if destination_position == Vector3.ZERO:
+    if $audio_movement.playing:
+      $audio_movement.stop()
+    return
 
-    if !$audio_movement.playing:
-      $audio_movement.play()
+  if !$audio_movement.playing:
+    $audio_movement.play()
 
-    move_laterally(delta)
-    move_and_slide()
+  move_laterally(delta)
+  move_and_slide()
 
 
 func move_laterally(delta):
