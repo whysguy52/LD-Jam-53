@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 999 # 666 for real, 999 for testing
-const DISTANCE_THRESHOLD = 5
+const DISTANCE_THRESHOLD = 10
 
 var destination_position : Vector3 = Vector3.ZERO
 

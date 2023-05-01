@@ -27,7 +27,7 @@ func _process(_delta):
     timer.start()
 
 func _on_timer_timeout():
-  angle_of_spawn = rng.randi_range(1,180)
+  angle_of_spawn = deg_to_rad(rng.randi_range(1,180))
   var border_location: Vector3
   border_location.x = radius_of_spawn * cos(angle_of_spawn)
   border_location.z = radius_of_spawn * sin(angle_of_spawn)
