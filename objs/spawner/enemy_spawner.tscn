@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpuy5mx1qlnf8"]
+[gd_scene load_steps=3 format=3 uid="uid://bpuy5mx1qlnf8"]
 
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="1_u3ruw"]
+[ext_resource type="AudioStream" uid="uid://c58psv2upv1gq" path="res://assets/audio/alarm.wav" id="2_eo14y"]
 
 [node name="enemy_spawner" type="Node3D"]
 script = ExtResource("1_u3ruw")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="alarm_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eo14y")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

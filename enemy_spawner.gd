@@ -6,7 +6,7 @@ var enemy_count = 0
 var rng
 var world_enemies
 var num_to_spawn
-var max_to_spawn = 3
+var max_to_spawn = 1
 var angle_of_spawn
 var radius_of_spawn = 270
 
@@ -28,6 +28,7 @@ func _process(_delta):
 
 func _on_timer_timeout():
   angle_of_spawn = deg_to_rad(rng.randi_range(1,360))
+  $alarm_sound.play()
 
   for i in num_to_spawn:
     var deviation = rng.randi_range(-10, 10)
