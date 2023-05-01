@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbvtkgpxo5qku"]
+[gd_scene load_steps=3 format=3 uid="uid://cbvtkgpxo5qku"]
 
 [ext_resource type="Script" path="res://objs/warehouse/warehouse.gd" id="1_3a48e"]
-[ext_resource type="Material" uid="uid://dgmwhjrt4i3gx" path="res://assets/3d/box/test_transparency.tres" id="1_beav6"]
 [ext_resource type="PackedScene" uid="uid://dpwr2gpbjvfx5" path="res://assets/3d/warehouse/warehouse.blend" id="2_0i80k"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_kgiv5"]
 
 [node name="warehouse" type="Node3D"]
 script = ExtResource("1_3a48e")
@@ -13,10 +10,6 @@ script = ExtResource("1_3a48e")
 
 [node name="box_location" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6)
-
-[node name="mesh" type="MeshInstance3D" parent="box_location"]
-mesh = SubResource("BoxMesh_kgiv5")
-surface_material_override/0 = ExtResource("1_beav6")
 
 [node name="spawn" type="Node3D" parent="box_location"]
 

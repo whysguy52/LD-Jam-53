@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0vfowk6bwjr8"]
+[gd_scene load_steps=6 format=3 uid="uid://c0vfowk6bwjr8"]
 
 [ext_resource type="Script" path="res://objs/house_small/house_small.gd" id="1_bfuu5"]
 [ext_resource type="PackedScene" uid="uid://bccpaondqqptg" path="res://assets/3d/houses/house_small.blend" id="1_smmhu"]
-[ext_resource type="Material" path="res://assets/3d/box/test_transparency.tres" id="2_hd3fh"]
 [ext_resource type="PackedScene" uid="uid://dahvs23usvcvn" path="res://assets/3d/house_arrow/house_arrow.blend" id="4_sg8r7"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7xnos"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ouf7k"]
 
@@ -21,12 +18,10 @@ script = ExtResource("1_bfuu5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
 collision_layer = 2
 
-[node name="mesh" type="MeshInstance3D" parent="delivery_area"]
-mesh = SubResource("BoxMesh_7xnos")
-surface_material_override/0 = ExtResource("2_hd3fh")
-
 [node name="collision" type="CollisionShape3D" parent="delivery_area"]
 shape = SubResource("BoxShape3D_ouf7k")
+
+[node name="boxes" type="Node3D" parent="delivery_area"]
 
 [node name="selection_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -40,5 +35,10 @@ shape = SubResource("BoxShape3D_4eejk")
 transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0, 9.31911, 0)
 visible = false
 
+[node name="remove_delivery_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="mouse_entered" from="selection_area" to="." method="_on_selection_area_mouse_entered"]
 [connection signal="mouse_exited" from="selection_area" to="." method="_on_selection_area_mouse_exited"]
+[connection signal="timeout" from="remove_delivery_timer" to="." method="_on_remove_delivery_timer_timeout"]

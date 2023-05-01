@@ -4,6 +4,10 @@ var selection_material_overlay = preload("res://assets/3d/houses/selection_mater
 
 var is_hovered = false
 
+func deliver_box(box):
+  box.reparent($delivery_area/boxes)
+  $remove_delivery_timer.start()
+
 func _on_selection_area_mouse_entered():
   set_hover(true)
 
@@ -21,3 +25,7 @@ func _input(event):
 func click():
   if $house_arrow.visible:
     get_node('/root/world/warehouse').spawn_drone()
+
+func _on_remove_delivery_timer_timeout():
+  for box in $delivery_area/boxes.get_children():
+    box.queue_free()

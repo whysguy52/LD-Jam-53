@@ -25,7 +25,12 @@ func spawn_box():
     return
 
   var box = box_scene.instantiate()
-  var delivery_area = level_node.delivery_areas.pick_random()
+  var available_delivery_areas = level_node.delivery_areas.filter(func(da): return da.get_node('boxes').get_child_count() == 0)
+
+  if available_delivery_areas.is_empty():
+    return
+
+  var delivery_area = available_delivery_areas.pick_random()
 
   var house = delivery_area.get_parent()
   house.get_node('house_arrow').show()

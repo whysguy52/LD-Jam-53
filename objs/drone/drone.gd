@@ -129,12 +129,15 @@ func movement_deliver(delta):
     # reached box x,z
     if $box_location.global_position.distance_to(deliver_box_location.global_position) < DISTANCE_THRESHOLD:
       # deliver box and prep to go to height
-      warehouse.delivered_box()
-      box_to_deliver.reparent(deliver_box_location)
+      var house = deliver_box_location.get_parent()
+      house.deliver_box(box_to_deliver)
+
       box_to_deliver = null
       go_to_height = true
       destination_position = global_position
       destination_position.y = global_position.y + FLY_HEIGHT
+
+      warehouse.delivered_box()
       return
 
     move_down_to(deliver_box_location, delta)
