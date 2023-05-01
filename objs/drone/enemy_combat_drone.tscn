@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://did8v6cdxje17"]
+
+[ext_resource type="Script" path="res://objs/drone/combat_drone.gd" id="1_vik6b"]
+[ext_resource type="AudioStream" uid="uid://cm0kf6yv8v5iu" path="res://assets/audio/drone_propellers.wav" id="2_rn2dl"]
+[ext_resource type="PackedScene" uid="uid://c44ltxchwqwib" path="res://assets/3d/combat_drone/enemy_combat_drone.blend" id="3_vlhli"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_engpj"]
+size = Vector3(3, 1.5, 3)
+
+[node name="drone" type="CharacterBody3D"]
+collision_mask = 0
+script = ExtResource("1_vik6b")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_engpj")
+
+[node name="box_location" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="audio_movement" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_rn2dl")
+volume_db = 12.973
+doppler_tracking = 2
+
+[node name="enemy_combat_drone" parent="." instance=ExtResource("3_vlhli")]
