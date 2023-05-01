@@ -6,7 +6,7 @@ const DISTANCE_THRESHOLD = 5
 var destination_position : Vector3 = Vector3.ZERO
 
 var target_acquired
-var target_to_kill
+#var target_to_kill
 var will_be_destroyed = true
 
 
@@ -78,19 +78,21 @@ func update_target_position():
 
 func _on_area_3d_body_entered(body):
 
-  if target_to_kill == null:
-    target_to_kill = body
-  elif "def_drone" in body.name and !("def_drone" in target_to_kill):
+  if target_acquired == null:
     target_acquired = body
+  elif "def_drone" in body.name and !("def_drone" in target_acquired):
+    target_acquired = body
+
+  print("targeting: ", body)
 
   $Timer.start()
   pass # Replace with function body.
 
 
 func _on_timer_timeout():
-  if target_to_kill == null:
+  if target_acquired == null:
     return
-  target_to_kill.kill()
+  target_acquired.kill()
 
 func kill():
   queue_free()
