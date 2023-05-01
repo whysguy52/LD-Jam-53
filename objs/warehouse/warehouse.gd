@@ -133,7 +133,7 @@ func deployed_def_drones_count():
   return def_drones_node.get_children().filter(func(def_drone): return !def_drone.will_be_destroyed).size()
 
 func deploy_def_drone():
-  if def_drones_node.get_child_count() >= max_drones:
+  if def_drones_node.get_child_count() >= max_drones :
     $audio_error.play()
     return
 
@@ -148,6 +148,10 @@ func deploy_def_drone():
 func drone_destroyed():
   max_drones -= 1
   ui.update_ui()
+
+func def_drone_destroyed():
+  max_def_drones -= 1
+  ui.update_def_ui()
 
 func delivered_box():
   money += PRICE_DELIVERY

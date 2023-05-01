@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c44ltxchwqwib" path="res://assets/3d/combat_drone/enemy_combat_drone.blend" id="3_vlhli"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ikkg"]
+size = Vector3(3, 1.5, 3)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_req4v"]
 height = 4.0

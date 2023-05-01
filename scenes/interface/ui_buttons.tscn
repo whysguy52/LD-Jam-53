@@ -21,6 +21,7 @@ text = "Deploy:"
 
 [node name="deploy_button" type="TextureButton" parent="."]
 layout_mode = 2
+tooltip_text = "(also space bar)"
 texture_normal = ExtResource("5_y5w5g")
 texture_pressed = ExtResource("6_nti2l")
 

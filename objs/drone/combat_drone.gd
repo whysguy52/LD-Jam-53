@@ -7,6 +7,8 @@ var destination_position : Vector3 = Vector3.ZERO
 
 var target_acquired
 var target_to_kill
+var will_be_destroyed = true
+
 
 func _ready():
   find_nearest_target()
@@ -72,8 +74,6 @@ func find_nearest_target():
 
 func update_target_position():
   destination_position = target_acquired.global_position
-  #destination_position = get_node('/root/world/warehouse').global_position
-    #else (if check_dist is greater than min_dist, do nothing)
 
 func _on_area_3d_body_entered(body):
   var isDrone
@@ -91,8 +91,5 @@ func _on_timer_timeout():
   target_to_kill.kill()
 
 func kill():
-  print("TODO: update enemy drone kill method")
-#  will_be_destroyed = true
-#  warehouse.drone_destroyed()
-#  queue_free()
-  pass
+  queue_free()
+
