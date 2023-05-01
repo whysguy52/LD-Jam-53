@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 999 # 666 for real, 999 for testing
-const DISTANCE_THRESHOLD = 3
+const DISTANCE_THRESHOLD = 9
 
 var destination_position : Vector3 = Vector3.ZERO
 
@@ -16,8 +16,12 @@ func _physics_process(delta):
   movement(delta)
 
 func movement(delta):
-  move_laterally(delta)
-  move_and_slide()
+  if target_acquired == null:
+    find_nearest_target()
+  else:
+    update_target_position()
+    move_laterally(delta)
+    move_and_slide()
 
 func move_laterally(delta):
   var horz_position = global_position
@@ -55,6 +59,8 @@ func find_nearest_target():
       min_dist = check_dist
       target_acquired = target
 
-  destination_position = get_node('/root/world/warehouse').global_position
+func update_target_position():
+  destination_position = target_acquired.global_position
+  #destination_position = get_node('/root/world/warehouse').global_position
     #else (if check_dist is greater than min_dist, do nothing)
 

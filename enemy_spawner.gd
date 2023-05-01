@@ -17,7 +17,7 @@ func _process(delta):
   if visible == false:
     return
   if enemy_count == 0 and timer.is_stopped():
-    timer.wait_time = rng.randi_range(1,2)
+    timer.wait_time = rng.randi_range(10,15)
     timer.start()
     print("timer ping: ",timer.wait_time)
 

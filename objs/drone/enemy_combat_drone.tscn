@@ -4,15 +4,16 @@
 [ext_resource type="AudioStream" uid="uid://cm0kf6yv8v5iu" path="res://assets/audio/drone_propellers.wav" id="2_rn2dl"]
 [ext_resource type="PackedScene" uid="uid://c44ltxchwqwib" path="res://assets/3d/combat_drone/enemy_combat_drone.blend" id="3_vlhli"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_engpj"]
-size = Vector3(3, 1.5, 3)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_req4v"]
+height = 1.0
+radius = 10.0
 
 [node name="drone" type="CharacterBody3D"]
 collision_mask = 0
 script = ExtResource("1_vik6b")
 
 [node name="collision" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_engpj")
+shape = SubResource("CylinderShape3D_req4v")
 
 [node name="box_location" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
