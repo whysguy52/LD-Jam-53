@@ -90,6 +90,7 @@ func _on_area_3d_body_entered(body):
     return #already targeting a def drone
   else:
     target_acquired = body
+    $audio_shoot.play()
     $Timer.start()
 
 func _on_timer_timeout():
@@ -98,5 +99,6 @@ func _on_timer_timeout():
   target_acquired.kill()
 
 func kill():
+  $death_explosion.play()
   queue_free()
 

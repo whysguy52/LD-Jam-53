@@ -171,6 +171,7 @@ func pickup_box(box):
   box_to_pickup = box
 
 func kill():
+  $death_explosion.play()
   will_be_destroyed = true
   warehouse.drone_destroyed()
   queue_free()

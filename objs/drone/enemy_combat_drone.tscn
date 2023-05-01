@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://did8v6cdxje17"]
+[gd_scene load_steps=8 format=3 uid="uid://did8v6cdxje17"]
 
 [ext_resource type="Script" path="res://objs/drone/combat_drone.gd" id="1_vik6b"]
 [ext_resource type="AudioStream" uid="uid://cm0kf6yv8v5iu" path="res://assets/audio/drone_propellers.wav" id="2_rn2dl"]
 [ext_resource type="PackedScene" uid="uid://c44ltxchwqwib" path="res://assets/3d/combat_drone/enemy_combat_drone.blend" id="3_vlhli"]
+[ext_resource type="AudioStream" uid="uid://1ttp0828vmur" path="res://assets/audio/explosion.wav" id="4_idi3q"]
+[ext_resource type="AudioStream" uid="uid://cu80x3hehxbu3" path="res://assets/audio/laserShoot.wav" id="5_sg4xf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r7eqw"]
 radius = 2.0
@@ -39,6 +41,14 @@ shape = SubResource("CylinderShape3D_req4v")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="death_explosion" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_idi3q")
+volume_db = 12.0
+
+[node name="audio_shoot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_sg4xf")
+volume_db = 12.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

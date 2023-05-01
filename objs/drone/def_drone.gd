@@ -122,6 +122,7 @@ func _on_area_3d_body_entered(body):
     $Timer.start()
   else:
     target_acquired = body
+    $audio_shoot.play()
     $Timer.start()
 
 func _on_timer_timeout():
@@ -131,6 +132,7 @@ func _on_timer_timeout():
     target_acquired.kill()
 
 func kill():
+  $death_explosion.play()
   will_be_destroyed = true
   warehouse.def_drone_destroyed()
   queue_free()
