@@ -32,7 +32,7 @@ func _on_timer_timeout():
 
   for i in num_to_spawn:
     var deviation = rng.randi_range(-10, 10)
-    var border_location: Vector3
+    var border_location = Vector3()
     border_location.x = radius_of_spawn * cos(angle_of_spawn) + deviation
     border_location.z = radius_of_spawn * sin(angle_of_spawn) + deviation
     var enemy = enemy_scene.instantiate()

@@ -4,9 +4,9 @@ var tower_to_buy = null
 
 @onready var warehouse = get_node('/root/world/warehouse')
 
-func _input(event):
-    if event.is_action_pressed("deploy_button"):
-      _on_deploy_button_pressed()
+func _process(_delta):
+  if Input.is_action_just_pressed("deploy_button"):
+    warehouse.deploy_def_drone()
 
 func _on_buy_drone_button_pressed():
   warehouse.buy_drone()

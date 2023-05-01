@@ -86,7 +86,7 @@ func update_target_position():
   destination_position = target_acquired.global_position
 
 func _on_area_3d_body_entered(body):
-  if "def_drone" in target_acquired.name:
+  if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "def_drone":
     return #already targeting a def drone
   else:
     target_acquired = body

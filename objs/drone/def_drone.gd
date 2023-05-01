@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 const SPEED = 999 # 666 for real, 999 for testing
-const DISTANCE_THRESHOLD = 10
+const DISTANCE_THRESHOLD = 10.0
+const DISTANCE_LOCATION_THRESHOLD = 0.3
 
 var destination_position : Vector3 = Vector3.ZERO
 
@@ -47,7 +48,9 @@ func move_laterally(delta):
     look_at_position.y = global_position.y
     look_at(look_at_position, Vector3.UP)
 
-  if horz_position.distance_to(destination_position) < DISTANCE_THRESHOLD:
+  var distance_threshold = DISTANCE_LOCATION_THRESHOLD if go_to_warehouse else DISTANCE_THRESHOLD
+
+  if horz_position.distance_to(destination_position) < distance_threshold:
     # lock into dest x/z since we're close enough
     horz_position.x = destination_position.x
     horz_position.z = destination_position.z
@@ -71,7 +74,7 @@ func movement_go_to_warehouse(delta):
     return
 
   # reached warehouse drone spawn location x,z
-  if global_position.distance_to(drone_spawn_location.global_position) < DISTANCE_THRESHOLD:
+  if global_position.distance_to(drone_spawn_location.global_position) < DISTANCE_LOCATION_THRESHOLD:
     # mark for destruction
     will_be_destroyed = true
     queue_free()
@@ -118,7 +121,7 @@ func update_target_position():
     #else (if check_dist is greater than min_dist, do nothing)
 
 func _on_area_3d_body_entered(body):
-  if "enemy_drone" in target_acquired.name:
+  if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "enemy_drone":
     $Timer.start()
   else:
     target_acquired = body
@@ -127,7 +130,7 @@ func _on_area_3d_body_entered(body):
 
 func _on_timer_timeout():
   print("timeout target: ", target_acquired.name)
-  if "enemy_drone" in target_acquired.name:
+  if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "enemy_drone":
     print("killing")
     target_acquired.kill()
 
