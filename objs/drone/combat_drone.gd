@@ -81,7 +81,7 @@ func _on_area_3d_body_entered(body):
     isDrone = true
   else:
     isDrone = false
-
+  print(body.name)
   target_to_kill = body
   $Timer.start()
   pass # Replace with function body.
@@ -89,3 +89,10 @@ func _on_area_3d_body_entered(body):
 
 func _on_timer_timeout():
   target_to_kill.kill()
+
+func kill():
+  print("TODO: update enemy drone kill method")
+#  will_be_destroyed = true
+#  warehouse.drone_destroyed()
+#  queue_free()
+  pass

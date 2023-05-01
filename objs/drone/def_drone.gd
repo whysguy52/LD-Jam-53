@@ -81,11 +81,13 @@ func update_target_position():
     #else (if check_dist is greater than min_dist, do nothing)
 
 func _on_area_3d_body_entered(body):
-  var isDrone
-  if "drone" in body.name:
-    isDrone = true
+  var is_enemy_drone
+  print(body.name)
+  if "enemy_drone" in body.name:
+    is_enemy_drone = true
   else:
-    isDrone = false
+    is_enemy_drone = false
+    return
 
   target_to_kill = body
   $Timer.start()
@@ -94,3 +96,10 @@ func _on_area_3d_body_entered(body):
 
 func _on_timer_timeout():
   target_to_kill.kill()
+
+func kill():
+  print("TODO: update def drone kill method")
+#  will_be_destroyed = true
+#  warehouse.drone_destroyed()
+#  queue_free()
+  pass

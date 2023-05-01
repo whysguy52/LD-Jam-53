@@ -58,3 +58,6 @@ cam_zoom_out={
 3d_physics/layer_1="drone_tower_radius"
 3d_physics/layer_2="delivery_area"
 3d_physics/layer_3="mouse_selection_area"
+3d_physics/layer_4="delivery_drones"
+3d_physics/layer_5="defense_drones"
+3d_physics/layer_6="enemy_drones"

@@ -135,17 +135,14 @@ func deployed_def_drones_count():
 func deploy_def_drone():
   if def_drones_node.get_child_count() >= max_drones:
     $audio_error.play()
-    print("deploy_def_drone - returning")
     return
 
-  print("attempting to spawn def drone")
   var def_drone = def_drone_scene.instantiate()
 
   get_parent().get_node('def_drones').add_child(def_drone)
   ui.update_def_ui()
 
   def_drone.global_position = $def_drone_spawn_location.global_position
-
 
 
 func drone_destroyed():
