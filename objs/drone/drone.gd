@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const FLY_HEIGHT = 10
+const FLY_HEIGHT = 12
 const SPEED = 500 # 999 for testing
 const DISTANCE_THRESHOLD = 0.3
 
@@ -78,7 +78,7 @@ func movement_pickup(delta):
     warehouse.get_node('box_timer').start()
     go_to_height = true
     destination_position = global_position
-    destination_position.y = global_position.y + FLY_HEIGHT
+    destination_position.y = FLY_HEIGHT
     return
 
   move_down_to(box_to_pickup, delta)
@@ -137,7 +137,7 @@ func movement_deliver(delta):
       box_to_deliver = null
       go_to_height = true
       destination_position = global_position
-      destination_position.y = global_position.y + FLY_HEIGHT
+      destination_position.y = FLY_HEIGHT
 
       warehouse.delivered_box()
       return
