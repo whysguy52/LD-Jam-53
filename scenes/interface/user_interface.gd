@@ -8,3 +8,6 @@ func _ready():
 func update_ui():
   $h_info_container/max_value.text = str(warehouse.max_drones)
   $h_info_container/available_value.text = str(warehouse.max_drones - warehouse.working_drones_count())
+
+func update_def_ui():
+  pass

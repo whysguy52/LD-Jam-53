@@ -168,3 +168,8 @@ func pickup_box(box):
   destination_position.y = FLY_HEIGHT
   go_to_height = true
   box_to_pickup = box
+
+func kill():
+  will_be_destroyed = true
+  warehouse.drone_destroyed()
+  queue_free()

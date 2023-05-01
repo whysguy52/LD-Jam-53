@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
 const SPEED = 999 # 666 for real, 999 for testing
-const DISTANCE_THRESHOLD = 9
+const DISTANCE_THRESHOLD = 5
 
 var destination_position : Vector3 = Vector3.ZERO
 
 var target_acquired
+var target_to_kill
 
 func _ready():
   find_nearest_target()
@@ -20,8 +21,18 @@ func movement(delta):
     find_nearest_target()
   else:
     update_target_position()
+
+    if destination_position == Vector3.ZERO:
+      if $audio_movement.playing:
+        $audio_movement.stop()
+      return
+
+    if !$audio_movement.playing:
+      $audio_movement.play()
+
     move_laterally(delta)
     move_and_slide()
+
 
 func move_laterally(delta):
   var horz_position = global_position
@@ -64,3 +75,17 @@ func update_target_position():
   #destination_position = get_node('/root/world/warehouse').global_position
     #else (if check_dist is greater than min_dist, do nothing)
 
+func _on_area_3d_body_entered(body):
+  var isDrone
+  if "drone" in body.name:
+    isDrone = true
+  else:
+    isDrone = false
+
+  target_to_kill = body
+  $Timer.start()
+  pass # Replace with function body.
+
+
+func _on_timer_timeout():
+  target_to_kill.kill()

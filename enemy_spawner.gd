@@ -13,16 +13,14 @@ func _ready():
   world_enemies = get_parent().get_node("enemies")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
   if visible == false:
     return
   if enemy_count == 0 and timer.is_stopped():
     timer.wait_time = rng.randi_range(10,15)
     timer.start()
-    print("timer ping: ",timer.wait_time)
 
 func _on_timer_timeout():
   var enemy = enemy_scene.instantiate()
   world_enemies.add_child(enemy)
   enemy_count += 1
-  print("enemy instantiated")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4dhcvii0mvng"]
+[gd_scene load_steps=7 format=3 uid="uid://c4dhcvii0mvng"]
 
 [ext_resource type="Script" path="res://scenes/interface/user_interface.gd" id="1_gjny0"]
 [ext_resource type="Texture2D" uid="uid://5gsfaig0vr4" path="res://assets/2d/ui/ui_background.png" id="1_ibuv3"]
 [ext_resource type="Texture2D" uid="uid://dm7basocv5eyc" path="res://assets/2d/ui/icons/drone_icon.png" id="2_yg00l"]
 [ext_resource type="FontFile" uid="uid://c2e7lrbtylo6" path="res://assets/2d/ui/fonts/BrunoAceSC-Regular.ttf" id="3_81uii"]
-[ext_resource type="PackedScene" uid="uid://dr7xn2jkohdii" path="res://scenes/interface/ui_buttons.tscn" id="5_mrkbf"]
+[ext_resource type="Texture2D" uid="uid://qm0qaw04xsm3" path="res://assets/2d/ui/icons/defense_drone_icon.png" id="5_716ev"]
+[ext_resource type="PackedScene" uid="uid://bdwbmbc8dyngo" path="res://scenes/interface/ui_buttons.tscn" id="5_mrkbf"]
 
 [node name="user_interface" type="Control"]
 layout_mode = 3
@@ -57,6 +58,34 @@ theme_override_font_sizes/font_size = 16
 text = "   Available="
 
 [node name="available_value" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 18
+text = "3"
+
+[node name="TextureRect2" type="TextureRect" parent="h_info_container"]
+layout_mode = 2
+texture = ExtResource("5_716ev")
+
+[node name="max_label2" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 16
+text = "MAX="
+
+[node name="max_value2" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 18
+text = "3"
+
+[node name="available_label2" type="Label" parent="h_info_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81uii")
+theme_override_font_sizes/font_size = 16
+text = "   Available="
+
+[node name="available_value2" type="Label" parent="h_info_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_81uii")
 theme_override_font_sizes/font_size = 18

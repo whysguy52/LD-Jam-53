@@ -6,10 +6,13 @@ var drone_scene = preload("res://objs/drone/drone.tscn")
 var MIN_BOX_TIMER = 1.0
 var MAX_BOX_TIMER = 5.0
 var INITIAL_MAX_DRONES = 3
+var INITIAL_DEF_DRONES = 3
 var PRICE_DRONE = 150
+var PRICE_DEF_DRONE = 150
 var PRICE_DELIVERY = 50
 var PRICE_TOWER = 300
 var max_drones = INITIAL_MAX_DRONES
+var max_def_drones = INITIAL_DEF_DRONES
 var money = 0
 
 @onready var drones_node = get_parent().get_node('drones')
@@ -105,12 +108,25 @@ func buy_tower(tower):
   ui_buttons.get_node('buy_tower_button').hide()
   level_node.init_delivery_areas()
 
+func buy_def_drone():
+  if money < PRICE_DEF_DRONE:
+    $audio_error.play()
+    return
+
+  max_def_drones += 1
+  money -= PRICE_DEF_DRONE
+  ui.update_def_ui()
+  money_ui.update_ui()
 
 func working_drones_count():
   if !drones_node:
     return 0
 
   return drones_node.get_children().filter(func(drone): return !drone.will_be_destroyed).size()
+
+func drone_destroyed():
+  max_drones -= 1
+  ui.update_ui()
 
 func delivered_box():
   money += PRICE_DELIVERY

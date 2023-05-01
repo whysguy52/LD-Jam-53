@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objs/warehouse/warehouse.gd" id="1_3a48e"]
 [ext_resource type="PackedScene" uid="uid://dpwr2gpbjvfx5" path="res://assets/3d/warehouse/warehouse.blend" id="2_0i80k"]
-[ext_resource type="AudioStream" uid="uid://c06uaowwfbwjn" path="res://assets/audio/error.wav" id="3_frkku"]
+[ext_resource type="AudioStream" uid="uid://c06uaowwfbwjn" path="res://assets/audio/error.wav" id="3_os6ow"]
 
 [node name="warehouse" type="Node3D"]
 script = ExtResource("1_3a48e")
@@ -15,13 +15,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6)
 [node name="spawn" type="Node3D" parent="box_location"]
 
 [node name="box_timer" type="Timer" parent="."]
-one_shot = true
 autostart = true
 
 [node name="drone_spawn_location" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61507, 0)
 
 [node name="audio_error" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_frkku")
+stream = ExtResource("3_os6ow")
 
 [connection signal="timeout" from="box_timer" to="." method="_on_box_timer_timeout"]

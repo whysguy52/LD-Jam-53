@@ -40,5 +40,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 2,
 
 [node name="enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.7818, 10, 0)
+visible = false
 
 [node name="enemy_spawner" parent="." instance=ExtResource("4_khkgj")]
+visible = false
