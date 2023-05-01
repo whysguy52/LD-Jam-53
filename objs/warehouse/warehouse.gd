@@ -3,14 +3,14 @@ extends Node3D
 var box_scene = preload("res://objs/box/box.tscn")
 var drone_scene = preload("res://objs/drone/drone.tscn")
 
-var MIN_BOX_TIMER = 3
-var MAX_BOX_TIMER = 15
+var MIN_BOX_TIMER = 2.0
+var MAX_BOX_TIMER = 7.0
 var INITIAL_MAX_DRONES = 3
 var PRICE_DRONE = 150
 var PRICE_DELIVERY = 50
 var PRICE_TOWER = 300
 var max_drones = INITIAL_MAX_DRONES
-var money = 350
+var money = 0
 
 @onready var drones_node = get_parent().get_node('drones')
 @onready var level_node = get_parent().get_node("level")
@@ -70,9 +70,13 @@ func spawn_drone():
   camera_controller.hide_ui_arrow()
 
 func _on_box_timer_timeout():
-  $box_timer.stop()
-  $box_timer.start(randf_range(MIN_BOX_TIMER, MAX_BOX_TIMER))
   spawn_box()
+
+  var total_towers = level_node.towers.size()
+  var towers_enabled = level_node.towers.filter(func(t): return t.isEnabled).size()
+  var timer_multiplier = total_towers - towers_enabled + 1
+
+  $box_timer.wait_time = timer_multiplier * randf_range(MIN_BOX_TIMER, MAX_BOX_TIMER) / total_towers
 
 func buy_drone():
   if money < PRICE_DRONE:

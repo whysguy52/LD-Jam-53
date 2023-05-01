@@ -14,6 +14,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6)
 [node name="spawn" type="Node3D" parent="box_location"]
 
 [node name="box_timer" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="drone_spawn_location" type="Node3D" parent="."]

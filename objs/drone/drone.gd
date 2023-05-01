@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const FLY_HEIGHT = 10
-const SPEED = 999 # 666 for real, 999 for testing
+const SPEED = 500 # 999 for testing
 const DISTANCE_THRESHOLD = 0.3
 
 var destination_position : Vector3 = Vector3.ZERO
@@ -74,6 +74,7 @@ func movement_pickup(delta):
     box_to_deliver = box_to_pickup
     box_to_deliver.reparent($box_location)
     box_to_pickup = null
+    warehouse.get_node('box_timer').start()
     go_to_height = true
     destination_position = global_position
     destination_position.y = global_position.y + FLY_HEIGHT
