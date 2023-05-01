@@ -4,8 +4,8 @@ const SPEED = 999 # 666 for real, 999 for testing
 const DISTANCE_THRESHOLD = 10.0
 const DISTANCE_LOCATION_THRESHOLD = 0.3
 
+var hp = 3
 var destination_position : Vector3 = Vector3.ZERO
-
 var target_acquired: Object
 var will_be_destroyed = false
 var go_to_warehouse = false
@@ -129,10 +129,13 @@ func _on_area_3d_body_entered(body):
     $Timer.start()
 
 func _on_timer_timeout():
-  print("timeout target: ", target_acquired.name)
   if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "enemy_drone":
-    print("killing")
-    target_acquired.kill()
+    target_acquired.hit()
+
+func hit():
+  hp -= 1
+  if hp == 0:
+    kill()
 
 func kill():
   $death_explosion.play()

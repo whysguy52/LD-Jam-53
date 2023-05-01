@@ -4,7 +4,7 @@ const SPEED = 999 # 666 for real, 999 for testing
 const DISTANCE_THRESHOLD = 10
 
 var destination_position : Vector3 = Vector3.ZERO
-
+var hp = 3
 var target_acquired
 #var target_to_kill
 var will_be_destroyed = true
@@ -96,7 +96,12 @@ func _on_area_3d_body_entered(body):
 func _on_timer_timeout():
   if target_acquired == null:
     return
-  target_acquired.kill()
+  target_acquired.hit()
+
+func hit():
+  hp -= 1
+  if hp == 0:
+    kill()
 
 func kill():
   $death_explosion.play()

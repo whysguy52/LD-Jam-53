@@ -4,6 +4,7 @@ const FLY_HEIGHT = 12
 const SPEED = 500 # 999 for testing
 const DISTANCE_THRESHOLD = 0.3
 
+var hp = 2
 var destination_position : Vector3 = Vector3.ZERO
 var box_to_pickup = null # NOTE: this is a Box, dunno how to import class/script type names yet
 var box_to_deliver = null # NOTE: this is a Box, dunno how to import class/script type names yet
@@ -169,6 +170,11 @@ func pickup_box(box):
   destination_position.y = FLY_HEIGHT
   go_to_height = true
   box_to_pickup = box
+
+func hit():
+  hp -= 1
+  if hp == 0:
+    kill()
 
 func kill():
   $death_explosion.play()
