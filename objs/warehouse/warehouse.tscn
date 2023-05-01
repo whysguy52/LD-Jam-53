@@ -23,4 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61507, 0)
 [node name="audio_error" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_os6ow")
 
+[node name="def_drone_spawn_location" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
 [connection signal="timeout" from="box_timer" to="." method="_on_box_timer_timeout"]

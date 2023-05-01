@@ -2,6 +2,7 @@ extends Node3D
 
 var box_scene = preload("res://objs/box/box.tscn")
 var drone_scene = preload("res://objs/drone/drone.tscn")
+var def_drone_scene = preload("res://objs/drone/combat_drone.tscn")
 
 var MIN_BOX_TIMER = 1.0
 var MAX_BOX_TIMER = 5.0
@@ -16,6 +17,7 @@ var max_def_drones = INITIAL_DEF_DRONES
 var money = 0
 
 @onready var drones_node = get_parent().get_node('drones')
+@onready var def_drones_node = get_parent().get_node('def_drones')
 @onready var level_node = get_parent().get_node("level")
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 @onready var money_ui = get_node('/root/world/camera_controller/camera/money_ui')
@@ -123,6 +125,28 @@ func working_drones_count():
     return 0
 
   return drones_node.get_children().filter(func(drone): return !drone.will_be_destroyed).size()
+
+func deployed_def_drones_count():
+  if !def_drones_node:
+    return 0
+
+  return def_drones_node.get_children().filter(func(def_drone): return !def_drone.will_be_destroyed).size()
+
+func deploy_def_drone():
+  if def_drones_node.get_child_count() >= max_drones:
+    $audio_error.play()
+    print("deploy_def_drone - returning")
+    return
+
+  print("attempting to spawn def drone")
+  var def_drone = def_drone_scene.instantiate()
+
+  get_parent().get_node('def_drones').add_child(def_drone)
+  ui.update_def_ui()
+
+  def_drone.global_position = $def_drone_spawn_location.global_position
+
+
 
 func drone_destroyed():
   max_drones -= 1

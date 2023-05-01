@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cptjojufy1uph"]
 
-[ext_resource type="Script" path="res://objs/drone/combat_drone.gd" id="1_wgtny"]
+[ext_resource type="Script" path="res://objs/drone/def_drone.gd" id="1_occs6"]
 [ext_resource type="PackedScene" uid="uid://nrxmexj3jb3n" path="res://assets/3d/combat_drone/combat_drone.blend" id="3_ldky7"]
 [ext_resource type="AudioStream" uid="uid://cm0kf6yv8v5iu" path="res://assets/audio/drone_propellers.wav" id="3_q3avb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_engpj"]
 size = Vector3(3, 1.5, 3)
 
-[node name="drone" type="CharacterBody3D"]
+[node name="def_drone" type="CharacterBody3D"]
 collision_mask = 0
-script = ExtResource("1_wgtny")
+script = ExtResource("1_occs6")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_engpj")

@@ -10,4 +10,5 @@ func update_ui():
   $h_info_container/available_value.text = str(warehouse.max_drones - warehouse.working_drones_count())
 
 func update_def_ui():
-  pass
+  $h_info_container/max_def_drone_value.text = str(warehouse.max_def_drones)
+  $h_info_container/available_value.text = str(warehouse.max_def_drones - warehouse.deployed_def_drones_count() )

@@ -12,3 +12,6 @@ func _on_buy_tower_button_pressed():
 
 func _on_buy_def_drone_button_pressed():
   warehouse.buy_def_drone()
+
+func _on_deploy_button_pressed():
+  warehouse.deploy_def_drone()
