@@ -28,6 +28,10 @@ var delivered_boxes = 0
 func _ready():
   money_ui.update_ui()
 
+func _process(_delta):
+  if Input.is_action_just_pressed("quit"):
+    camera_controller.show_game_over_ui()
+
 func spawn_box():
   if $box_location/spawn.get_child_count() > 0:
     return
