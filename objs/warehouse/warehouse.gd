@@ -150,6 +150,9 @@ func drone_destroyed():
   max_drones -= 1
   ui.update_ui()
 
+  if max_drones <= 0:
+    game_over()
+
 func def_drone_destroyed():
   max_def_drones -= 1
   ui.update_def_ui()
@@ -157,3 +160,6 @@ func def_drone_destroyed():
 func delivered_box():
   money += PRICE_DELIVERY
   money_ui.update_ui()
+
+func game_over():
+  camera_controller.show_game_over_ui()

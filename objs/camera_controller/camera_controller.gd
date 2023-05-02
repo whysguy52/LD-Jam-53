@@ -78,3 +78,12 @@ func hide_ui_arrow():
 
 func set_direction(pointTo: Vector3):
   next_house = pointTo
+
+func show_game_over_ui():
+  $camera/game_over_ui.show()
+
+func _on_restart_button_pressed():
+  get_tree().reload_current_scene()
+
+func _on_exit_button_pressed():
+  get_tree().quit()
