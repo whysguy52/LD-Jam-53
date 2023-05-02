@@ -6,7 +6,7 @@ var delivery_areas = Array()
 var isEnabled = false
 var is_hovered = false
 
-@onready var ui_buttons = get_node('/root/world/camera_controller/camera/user_interface/buttons')
+@onready var ui_buttons = get_node('/root/world/camera_controller/camera/user_interface/outer_margin/inner_margin/buttons')
 
 func set_enabled(enabledSet: bool):
   isEnabled = enabledSet

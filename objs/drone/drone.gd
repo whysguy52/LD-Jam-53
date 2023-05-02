@@ -16,6 +16,7 @@ var will_be_destroyed = false
 @onready var warehouse = get_node('/root/world/warehouse')
 @onready var drone_spawn_location = get_node('/root/world/warehouse/drone_spawn_location')
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
+@onready var money_ui = get_node('/root/world/camera_controller/camera/money_ui')
 
 
 func _read(delta):
@@ -138,6 +139,8 @@ func movement_deliver(delta):
       # deliver box and prep to go to height
       var house = deliver_box_location.get_parent()
       house.deliver_box(box_to_deliver)
+      warehouse.delivered_boxes += 1
+      money_ui.update_ui()
 
       box_to_deliver = null
       go_to_height = true

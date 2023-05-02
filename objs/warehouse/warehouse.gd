@@ -15,6 +15,7 @@ var PRICE_TOWER = 300
 var max_drones = INITIAL_MAX_DRONES
 var max_def_drones = INITIAL_DEF_DRONES
 var money = 0
+var delivered_boxes = 0
 
 @onready var drones_node = get_parent().get_node('drones')
 @onready var def_drones_node = get_parent().get_node('def_drones')

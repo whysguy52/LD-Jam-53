@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://chv8b6wtssu5j" path="res://assets/2d/ui/icons/tower_icon_pressed.png" id="8_j482o"]
 
 [node name="buttons" type="HBoxContainer"]
-offset_right = 106.0
+offset_right = 232.0
 offset_bottom = 32.0
 alignment = 2
 script = ExtResource("1_6vijk")
@@ -20,6 +20,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_poj5n")
 theme_override_font_sizes/font_size = 16
 text = "Deploy:"
+vertical_alignment = 1
 
 [node name="deploy_button" type="TextureButton" parent="."]
 layout_mode = 2
@@ -32,11 +33,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_poj5n")
 theme_override_font_sizes/font_size = 16
-text = "BUY:"
+text = "Buy:"
+vertical_alignment = 1
 
 [node name="buy_button" type="TextureButton" parent="."]
 layout_mode = 2
-size_flags_horizontal = 8
 tooltip_text = "Cost: $150"
 texture_normal = ExtResource("2_phk55")
 texture_pressed = ExtResource("3_q4u0o")
@@ -50,7 +51,6 @@ texture_pressed = ExtResource("6_nti2l")
 [node name="buy_tower_button" type="TextureButton" parent="."]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 8
 tooltip_text = "Cost: $300"
 texture_normal = ExtResource("7_78tki")
 texture_pressed = ExtResource("8_j482o")

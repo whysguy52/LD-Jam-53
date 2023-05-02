@@ -7,35 +7,70 @@
 
 [node name="money_ui" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 script = ExtResource("1_dbfy3")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 161.0
-offset_bottom = 42.0
+[node name="money" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 53.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="bg" type="TextureRect" parent="money"]
+layout_mode = 2
 texture = ExtResource("1_gvv75")
 expand_mode = 1
 
-[node name="h_box" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="inner" type="MarginContainer" parent="money"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
 
-[node name="TextureRect" type="TextureRect" parent="h_box"]
+[node name="hbox" type="HBoxContainer" parent="money/inner"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="money/inner/hbox"]
 layout_mode = 2
 texture = ExtResource("1_s6020")
 expand_mode = 2
 
-[node name="equals_sign" type="Label" parent="h_box"]
+[node name="money_value" type="Label" parent="money/inner/hbox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0ujnc")
 theme_override_font_sizes/font_size = 16
-text = "="
+text = "0"
 
-[node name="money_value" type="Label" parent="h_box"]
+[node name="delivered" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="bg" type="TextureRect" parent="delivered"]
+layout_mode = 2
+texture = ExtResource("1_gvv75")
+expand_mode = 1
+
+[node name="inner" type="MarginContainer" parent="delivered"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="hbox" type="HBoxContainer" parent="delivered/inner"]
+layout_mode = 2
+
+[node name="delivered_label" type="Label" parent="delivered/inner/hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0ujnc")
+theme_override_font_sizes/font_size = 16
+text = " delivered:"
+
+[node name="delivered_value" type="Label" parent="delivered/inner/hbox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0ujnc")
 theme_override_font_sizes/font_size = 16
