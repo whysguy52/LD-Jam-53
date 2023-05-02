@@ -23,7 +23,7 @@ var delivered_boxes = 0
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 @onready var money_ui = get_node('/root/world/camera_controller/camera/money_ui')
 @onready var camera_controller = get_node("/root/world/camera_controller")
-@onready var ui_buttons = get_node('/root/world/camera_controller/camera/user_interface/buttons')
+@onready var ui_buttons = get_node('/root/world/camera_controller/camera/user_interface/outer_margin/inner_margin/buttons')
 
 func _ready():
   money_ui.update_ui()
