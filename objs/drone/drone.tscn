@@ -28,3 +28,8 @@ doppler_tracking = 2
 
 [node name="death_explosion" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_b4y37")
+
+[node name="hp_label" type="Label3D" parent="."]
+transform = Transform3D(4.39539, 0, 0, 0, 4.39539, 0, 0, 0, 4.39539, 0, 3, 0)
+pixel_size = 0.02
+billboard = 1

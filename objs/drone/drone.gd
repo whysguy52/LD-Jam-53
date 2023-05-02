@@ -17,6 +17,10 @@ var will_be_destroyed = false
 @onready var drone_spawn_location = get_node('/root/world/warehouse/drone_spawn_location')
 @onready var ui = get_node('/root/world/camera_controller/camera/user_interface')
 
+
+func _read(delta):
+  $hp_label.text = str(hp)
+
 func _physics_process(delta):
   movement(delta)
   #print("Drone height: ",global_position.y)

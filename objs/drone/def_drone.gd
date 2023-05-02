@@ -5,6 +5,7 @@ const DISTANCE_THRESHOLD = 10.0
 const DISTANCE_LOCATION_THRESHOLD = 0.3
 
 var hp = 3
+var is_attacking = false
 var destination_position : Vector3 = Vector3.ZERO
 var target_acquired: Object
 var will_be_destroyed = false
@@ -16,9 +17,11 @@ var go_to_warehouse = false
 
 func _ready():
   find_nearest_target()
+  $hp_label.text = str(hp)
 
 func _physics_process(delta):
   movement(delta)
+  attack()
   #print("Drone height: ",global_position.y)
 
 func movement(delta):
@@ -122,18 +125,28 @@ func update_target_position():
 
 func _on_area_3d_body_entered(body):
   if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "enemy_drone":
-    $Timer.start()
+    is_attacking = true
+    return #$Timer.start()
   else:
     target_acquired = body
-    $audio_shoot.play()
-    $Timer.start()
+    is_attacking = true
 
 func _on_timer_timeout():
   if target_acquired and is_instance_valid(target_acquired) and target_acquired.name == "enemy_drone":
     target_acquired.hit()
+  else:
+    is_attacking = false
+
+func attack():
+  if !is_attacking or !$Timer.is_stopped():
+    return
+  else:
+    $audio_shoot.play()
+    $Timer.start()
 
 func hit():
   hp -= 1
+  $hp_label.text = str(hp)
   if hp == 0:
     kill()
 
